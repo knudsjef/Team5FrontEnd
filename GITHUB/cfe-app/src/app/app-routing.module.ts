@@ -5,7 +5,6 @@ import { MultiplayerComponent } from './component/multiplayer/multiplayer.compon
 import { SandboxComponent } from './component/sandbox/sandbox.component';
 import { SingleplayerComponent } from './component/singleplayer/singleplayer.component';
 
-
 //import { LoginGuard } from './login.guard';
 
 const routes: Routes = [
