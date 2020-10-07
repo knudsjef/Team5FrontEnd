@@ -1,3 +1,29 @@
 <div style="margin-top:106px" id="component">
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </div>
+
+<div class="d-flex" id="wrapper">
+  <!-- Sidebar -->
+  <div class="navbar-custom border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading">DigiCard </div>
+    <div class="list-group list-group-flush">
+      <a href="#" class="list-group-item list-group-item-action navbar-custom">Dashboard</a>
+      <a href="#" class="list-group-item list-group-item-action navbar-custom">Shortcuts</a>
+      <a href="#" class="list-group-item list-group-item-action navbar-custom">Overview</a>
+      <a href="#" class="list-group-item list-group-item-action navbar-custom">Events</a>
+      <a href="#" class="list-group-item list-group-item-action navbar-custom">Profile</a>
+      <a href="#" class="list-group-item list-group-item-action navbar-custom">Status</a>
+    </div>
+  </div>
+  <!-- /#sidebar-wrapper -->
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom border-bottom">
+      <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+  <!-- /#page-content-wrapper -->
+</div>
+<!-- /#wrapper -->

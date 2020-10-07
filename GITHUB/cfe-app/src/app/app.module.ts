@@ -4,6 +4,8 @@ import { AppRoutingModule, RoutingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CookieService } from 'ngx-cookie-service';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 
 import { HomepageComponent } from './component/homepage/homepage.component';
 
@@ -36,6 +38,7 @@ import { SandboxComponent } from './component/sandbox/sandbox.component';
     NgxSpinnerModule,
     BrowserAnimationsModule,
     TooltipModule.forRoot(),
+    DragDropModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
