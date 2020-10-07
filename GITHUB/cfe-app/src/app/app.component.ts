@@ -3,7 +3,7 @@ import {NgxSpinnerService} from 'ngx-spinner';
 import {BackendApiService} from './services/backend-api.service'
 import {LoginService} from './services/login.service';
 import {CookieService} from 'ngx-cookie-service';
-
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-root',
@@ -21,18 +21,11 @@ export class AppComponent implements OnInit {
     this.loginService.logout();
   }
 
-  
   ngOnInit() {
-    this.loggedIn = this.loginService.isLoggedIn();
-  
+    //Toggle Click Function
+    $("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+    });
   }
-  public closeOptionsDropdown() {
-    this.dropdownOpen = false;
-  }
-
-  public toggleOptionsDropdown() {
-    this.dropdownOpen = !this.dropdownOpen;
-  }
-
-
 }
