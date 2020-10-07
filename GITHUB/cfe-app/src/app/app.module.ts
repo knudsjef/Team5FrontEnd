@@ -4,6 +4,7 @@ import { AppRoutingModule, RoutingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CookieService } from 'ngx-cookie-service';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 import { HomepageComponent } from './component/homepage/homepage.component';
@@ -15,12 +16,18 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 // bootstrap modules
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { SingleplayerComponent } from './component/singleplayer/singleplayer.component';
+import { MultiplayerComponent } from './component/multiplayer/multiplayer.component';
+import { SandboxComponent } from './component/sandbox/sandbox.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RoutingComponents,
-    HomepageComponent
+    HomepageComponent,
+    SingleplayerComponent,
+    MultiplayerComponent,
+    SandboxComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +37,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     FormsModule,
     NgxSpinnerModule,
     BrowserAnimationsModule,
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    DragDropModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
