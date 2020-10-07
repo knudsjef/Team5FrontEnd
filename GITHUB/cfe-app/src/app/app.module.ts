@@ -14,12 +14,16 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 // bootstrap modules
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { HostComponent } from './component/host/host.component';
+import { TestPageComponent } from './component/testingGrounds/test-page/test-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RoutingComponents,
-    HomepageComponent
+    HomepageComponent,
+    HostComponent,
+    TestPageComponent
   ],
   imports: [
     BrowserModule,
