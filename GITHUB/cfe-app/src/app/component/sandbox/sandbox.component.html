@@ -2,9 +2,9 @@
     <h1 style="text-align:center;">SANDBOX BABY!</h1>
     <br>
     <div *ngFor="let card of cards">
-            <img class="card" src='../../../assets/Cards/{{card.type}}/{{card.fileName}}'
-            width="200px"
-            height="300px"
-            cdkDrag>
+        <app-card
+        [type] = "card.type"
+        [number] = "card.value">
+    </app-card>
     <div>
 </div>

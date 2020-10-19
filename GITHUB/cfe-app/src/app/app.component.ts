@@ -21,23 +21,11 @@ export class AppComponent implements OnInit {
     this.loginService.logout();
   }
 
-  
   ngOnInit() {
     //Toggle Click Function
-$("#menu-toggle").click(function(e) {
-e.preventDefault();
-$("#wrapper").toggleClass("toggled");
-});
-}
-
-  public toggleOptionsDropdown() {
-      this.dropdownOpen = !this.dropdownOpen;
-    }
-  // public toggleOptionsDropdown(){
-  //     $(".app.component.html").ready(() =>{
-  //     $(".button-collapse").sideNav2();
-  //     var sideNavScrollbar = document.querySelector('.custom-scrollbar');
-  //     var ps = new PerfectScrollbar(sideNavScrollbar);
-  //   });
-  // }
+    $("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+    });
+  }
 }

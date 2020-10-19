@@ -19,6 +19,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { SingleplayerComponent } from './component/singleplayer/singleplayer.component';
 import { MultiplayerComponent } from './component/multiplayer/multiplayer.component';
 import { SandboxComponent } from './component/sandbox/sandbox.component';
+import { CardComponent } from './component/card/card.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SandboxComponent } from './component/sandbox/sandbox.component';
     HomepageComponent,
     SingleplayerComponent,
     MultiplayerComponent,
-    SandboxComponent
+    SandboxComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
