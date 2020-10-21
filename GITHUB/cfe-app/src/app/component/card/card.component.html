@@ -1,6 +1,13 @@
+<a >
+    <img
+    [ngClass]="{
+        'card': !lastClickedCard,
+        'lastClickedCard': lastClickedCard
+    }"
+    src='../../../assets/Cards/{{type}}/{{number}}.jpg'
+    width="200px"
+    height="300px"
+    (mousedown)="ChangeClass()"
+    cdkDrag> 
+</a>
 
-<img
-src='../../../assets/Cards/{{type}}/{{number}}.jpg'
-width="200px"
-height="300px"
-cdkDrag>
