@@ -15,25 +15,21 @@ export class SandboxComponent implements OnInit {
   [
     {
       type: "Diamonds",
-      value: 1,
+      value: "1",
       fileName: '1.jpg'
     },
     {
       type: "Diamonds",
-      value: 2,
+      value: "2",
       fileName: '2.jpg'
     },
     {
       type: "Diamonds",
-      value: 3,
+      value: "3",
       fileName: '3.jpg'
     },
-]
+  ];
 
   ngOnInit(): void {
-  }
-
-  drop(event: CdkDragDrop<string[]>){
-    
   }
 }

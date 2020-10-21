@@ -21,6 +21,7 @@ import { TestPageComponent } from './component/testingGrounds/test-page/test-pag
 import { SingleplayerComponent } from './component/singleplayer/singleplayer.component';
 import { MultiplayerComponent } from './component/multiplayer/multiplayer.component';
 import { SandboxComponent } from './component/sandbox/sandbox.component';
+import { CardComponent } from './component/card/card.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SandboxComponent } from './component/sandbox/sandbox.component';
     TestPageComponent,
     SingleplayerComponent,
     MultiplayerComponent,
-    SandboxComponent
+    SandboxComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
