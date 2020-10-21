@@ -3,9 +3,17 @@
   <div class="navbar-custom border-right" id="sidebar-wrapper">
     <div class="sidebar-heading">DigiCard </div>
     <div class="list-group list-group-flush">
-      <a [routerLink]="['/singleplayer']"><img style="display:inline-block;" src="assets/img/singleplayer.png" class="navbar-image"></a>
-      <a [routerLink]="['/multiplayer']"><img style="display:inline-block;" src="assets/img/multiplayer.png" class="navbar-image"></a>
-      <a [routerLink]="['/sandbox']"><img style="display:inline-block;" src="assets/img/sandbox.png" class="navbar-image-sandbox"></a>
+      <a class="btn" data-toggle="collapse" href="#singleplayer" aria-expanded="false" aria-controls="collapse"><img style="display:inline-block;" src="assets/img/singleplayer.png" class="navbar-image"></a>
+      <div class="collapse multi-collapse" id="singleplayer">
+        <a class="btn" [routerLink]="['/singleplayer']"><img style="display:inline-block;" src="assets/img/Solitaire.png" class="navbar-drop-image"></a>
+        <a class="btn" [routerLink]="['/singleplayer']"><img style="display:inline-block;" src="assets/img/Blackjack.png" class="navbar-drop-image"></a>
+      </div>
+      <a class="btn" data-toggle="collapse" href="#multiplayer" aria-expanded="false" aria-controls="collapse"><img style="display:inline-block;" src="assets/img/multiplayer.png" class="navbar-image"></a>
+      <div class="collapse multi-collapse" id="multiplayer">
+        <a class="btn" [routerLink]="['/multiplayer']"><img style="display:inline-block;" src="assets/img/TexasHoldem.png" class="navbar-drop-image"></a>
+        <a class="btn" [routerLink]="['/multiplayer']"><img style="display:inline-block;" src="assets/img/Blackjack.png" class="navbar-drop-image"></a>
+      </div>
+      <a class="btn" [routerLink]="['/sandbox']"><img style="display:inline-block;" src="assets/img/sandbox.png" class="navbar-image-sandbox"></a>
     </div>
   </div>
   <!-- /#sidebar-wrapper -->
