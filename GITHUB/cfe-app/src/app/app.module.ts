@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CookieService } from 'ngx-cookie-service';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-
+import {MatTableModule} from '@angular/material/table';
 
 import { HomepageComponent } from './component/homepage/homepage.component';
 
@@ -22,6 +22,7 @@ import { SingleplayerComponent } from './component/singleplayer/singleplayer.com
 import { MultiplayerComponent } from './component/multiplayer/multiplayer.component';
 import { SandboxComponent } from './component/sandbox/sandbox.component';
 import { CardComponent } from './component/card/card.component';
+import { LeaderboardComponent } from './component/leaderboard/leaderboard.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CardComponent } from './component/card/card.component';
     SingleplayerComponent,
     MultiplayerComponent,
     SandboxComponent,
-    CardComponent
+    CardComponent,
+    LeaderboardComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { CardComponent } from './component/card/card.component';
     NgxSpinnerModule,
     BrowserAnimationsModule,
     TooltipModule.forRoot(),
-    DragDropModule
+    DragDropModule,
+    MatTableModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

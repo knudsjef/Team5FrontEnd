@@ -41,8 +41,13 @@ body {
     width: 100%;
     height: auto;
 }
-
 .navbar-image-sandbox {
     width: 70%;
     height: auto;
+    justify-items: left;
+}
+.navbar-drop-image {
+    margin-left: 10px;
+    height: 40px;
+    width: auto;
 }
