@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
-import io from "socket.io-client";
+import { BackendApiService } from 'src/app/services/backend-api.service';
 
 @Component({
   selector: 'app-test-page',
@@ -8,27 +8,52 @@ import io from "socket.io-client";
 })
 export class TestPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private backendApiService: BackendApiService) { }
 
-  @ViewChild("game")
-    private gameCanvas: ElementRef;
-
-    private context: any;
-    private socket: any;
-
-    public ngOnInit() {
-        this.socket = io("http://localhost:3000");
-    }
-
-    public ngAfterViewInit() {
-      this.context = this.gameCanvas.nativeElement.getContext("2d");
-      this.socket.on("position", data => {
-          this.context.clearRect(0, 0, this.gameCanvas.nativeElement.width, this.gameCanvas.nativeElement.height);
-          this.context.fillRect(data.x, data.y, 20, 20);
-      });
+  public ngOnInit() {
   }
 
-  testFunction(){
-    console.log("Button pressed");
+  hostGame(){
+    var dict={};
+    dict["gameID"]=1;
+    dict["gameType"]="blackjack";
+    this.backendApiService.backendRequest("hostGame",dict).subscribe(obj =>{
+      console.log(obj);
+    });
+  }
+  setup(){
+    var dict={};
+    dict["gameID"]=1;
+    dict["method"]="setup";
+    dict["numPlayers"]=2;
+    this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
+      console.log(obj);
+    });
+  }
+  deal(){
+    var dict={};
+    dict["gameID"]=1;
+    dict["method"]="deal";
+    this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
+      console.log(obj);
+    });
+  }
+  hit(){
+    var dict={};
+    dict["gameID"]=1;
+    dict["method"]="hit";
+    dict["hand"]="player1";
+    this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
+      console.log(obj);
+    });
+  }
+  getHand1(){
+    var dict={};
+    dict["gameID"]=1;
+    dict["method"]="getHand";
+    dict["hand"]="player1";
+    this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
+      console.log(obj);
+    })
   }
 }
