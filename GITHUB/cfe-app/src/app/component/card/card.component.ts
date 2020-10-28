@@ -1,10 +1,27 @@
-import { Component, Input, OnInit} from '@angular/core';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { CdkDragEnd } from '@angular/cdk/drag-drop';
+import { Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import { SandboxComponent } from '../sandbox/sandbox.component';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  styleUrls: ['./card.component.scss'],
+  animations: [
+    trigger('FlipCard',
+    [
+      state('NotFlipped', style({
+        transform: 'rotateY(90deg)'
+      })),
+      state('Flipped', style({
+        transform: 'rotateY(0deg)'
+      })),
+      transition('NotFlipped <=> Flipped',
+      [
+        animate('0.25s')
+      ])
+    ])
+  ]
 })
 export class CardComponent implements OnInit {
   @Input() type: string;
@@ -12,11 +29,11 @@ export class CardComponent implements OnInit {
   source: string;
   xPos: Number;
   yPos: Number;
-  isSingleClick: Boolean = false;
+  flipping: Boolean = false;
   isFlipped: Boolean = false;
   public lastClickedCard: boolean = false;
 
-  constructor() {
+  constructor(private element: ElementRef) {
   }
 
   ngOnInit(): void {
@@ -33,16 +50,22 @@ export class CardComponent implements OnInit {
     SandboxComponent.GetInstance().ClearCardsClasses(this);
   }
 
-  public GetPosition(e): void
+  public GetPosition(e: CdkDragEnd): void
   {
-    this.xPos = e.clientX;
-    this.yPos = e.clientY;
-    console.log(this.xPos + ", " + this.yPos);
+    let rect = this.element.nativeElement.getBoundingClientRect();
+    this.xPos = rect.x + e.source.getFreeDragPosition().x;
+    this.yPos = rect.y + e.source.getFreeDragPosition().y
+    console.log(this.xPos, this.yPos);
   }
 
   FlipCardOnDoubleClick(){
     this.isFlipped = !this.isFlipped;
-    this.GetImageSource();
+    this.flipping = true;
+    setTimeout(() => 
+    {
+      this.GetImageSource();
+      this.flipping = false;
+    }, 250);
   }
 
  GetImageSource()
