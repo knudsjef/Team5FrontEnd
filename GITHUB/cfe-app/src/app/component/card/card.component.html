@@ -8,8 +8,10 @@
     width="200px"
     height="300px"
     (mousedown)="ChangeClass()"
-    (mouseup)="GetPosition($event)"
+    (cdkDragEnded)="GetPosition($event)"
     (dblclick)="FlipCardOnDoubleClick()"
+    [@FlipCard]="flipping ? 'NotFlipped' : 'Flipped'"
+
     cdkDrag> 
 </a>
 
