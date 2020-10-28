@@ -20,6 +20,7 @@ import { SingleplayerComponent } from './component/singleplayer/singleplayer.com
 import { MultiplayerComponent } from './component/multiplayer/multiplayer.component';
 import { SandboxComponent } from './component/sandbox/sandbox.component';
 import { CardComponent } from './component/card/card.component';
+import { BlackjackComponent } from './component/blackjack/blackjack.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CardComponent } from './component/card/card.component';
     SingleplayerComponent,
     MultiplayerComponent,
     SandboxComponent,
-    CardComponent
+    CardComponent,
+    BlackjackComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { BlackjackComponent } from './component/blackjack/blackjack.component';
 import { HomepageComponent } from './component/homepage/homepage.component';
 import { MultiplayerComponent } from './component/multiplayer/multiplayer.component';
 import { SandboxComponent } from './component/sandbox/sandbox.component';
@@ -11,7 +12,8 @@ const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'singleplayer', component: SingleplayerComponent },
   { path: 'multiplayer', component: MultiplayerComponent },
-  { path: 'sandbox', component: SandboxComponent }
+  { path: 'sandbox', component: SandboxComponent },
+  { path: 'blackjack', component: BlackjackComponent }
 ];
 
 @NgModule({
@@ -19,4 +21,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const RoutingComponents = [HomepageComponent, SingleplayerComponent, MultiplayerComponent, SandboxComponent]
+export const RoutingComponents = [HomepageComponent, SingleplayerComponent, MultiplayerComponent, SandboxComponent, BlackjackComponent]
