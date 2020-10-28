@@ -25,7 +25,7 @@ export class TestPageComponent implements OnInit {
     var dict={};
     dict["gameID"]=1;
     dict["method"]="setup";
-    dict["numPlayers"]=2;
+    dict["numPlayers"]=1;
     this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
       console.log(obj);
     });
