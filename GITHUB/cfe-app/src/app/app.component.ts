@@ -3,6 +3,7 @@ import {NgxSpinnerService} from 'ngx-spinner';
 import {BackendApiService} from './services/backend-api.service'
 import {LoginService} from './services/login.service';
 import {CookieService} from 'ngx-cookie-service';
+import {AppRoutingModule} from './app-routing.module';
 import * as $ from 'jquery';
 
 @Component({

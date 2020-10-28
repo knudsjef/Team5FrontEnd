@@ -23,10 +23,12 @@ import { MultiplayerComponent } from './component/multiplayer/multiplayer.compon
 import { SandboxComponent } from './component/sandbox/sandbox.component';
 import { CardComponent } from './component/card/card.component';
 import { LeaderboardComponent } from './component/leaderboard/leaderboard.component';
+import { BlackjackComponent } from './component/blackjack/blackjack.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    BlackjackComponent,
     RoutingComponents,
     HomepageComponent,
     HostComponent,

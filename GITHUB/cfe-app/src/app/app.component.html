@@ -6,7 +6,7 @@
       <a class="btn" data-toggle="collapse" href="#singleplayer" aria-expanded="false" aria-controls="collapse"><img style="display:inline-block;" src="assets/img/singleplayer.png" class="navbar-image"></a>
       <div class="collapse multi-collapse" id="singleplayer">
         <a class="btn" [routerLink]="['/singleplayer']"><img style="display:inline-block;" src="assets/img/Solitaire.png" class="navbar-drop-image"></a>
-        <a class="btn" [routerLink]="['/singleplayer']"><img style="display:inline-block;" src="assets/img/Blackjack.png" class="navbar-drop-image"></a>
+        <a class="btn" [routerLink]="['blackjack']"><img style="display:inline-block;" src="assets/img/Blackjack.png" class="navbar-drop-image"></a>
       </div>
       <a class="btn" data-toggle="collapse" href="#multiplayer" aria-expanded="false" aria-controls="collapse"><img style="display:inline-block;" src="assets/img/multiplayer.png" class="navbar-image"></a>
       <div class="collapse multi-collapse" id="multiplayer">
@@ -24,8 +24,7 @@
       <img style="display:inline-block;" src="assets/img/menu.png" width="100%" height="100%">
     </button>
   <!-- /#page-content-wrapper -->
-</div>
-<!-- /#wrapper -->
-<div style="margin-top:106px" id="component">
-  <router-outlet></router-outlet>
+  <div style="margin-top:106px" id="component">
+    <router-outlet></router-outlet>
+  </div>
 </div>
