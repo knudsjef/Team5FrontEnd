@@ -4,11 +4,12 @@
         'card': !lastClickedCard,
         'lastClickedCard': lastClickedCard
     }"
-    src='../../../assets/Cards/{{type}}/{{number}}.jpg'
+    [src]="source"
     width="200px"
     height="300px"
     (mousedown)="ChangeClass()"
     (mouseup)="GetPosition($event)"
+    (dblclick)="FlipCardOnDoubleClick()"
     cdkDrag> 
 </a>
 
