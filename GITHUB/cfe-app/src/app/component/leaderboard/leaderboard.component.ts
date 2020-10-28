@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSort } from '@angular/material/sort';
+import { BackendApiService } from 'src/app/services/backend-api.service';
 
 export interface Scores {
   name: string;
@@ -14,7 +14,7 @@ export interface Scores {
 
 export class LeaderboardComponent implements OnInit {
 
-  constructor() {
+  constructor(private backendApiService: BackendApiService) {
 
 
   }
@@ -33,6 +33,12 @@ export class LeaderboardComponent implements OnInit {
   displayedColumns: string[] = ['Name', "Score"];
   
   ngOnInit(): void {
+    var dict={};
+    dict["gameType"]="blackjack";
+    this.backendApiService.backendRequest("getLeaderboard",dict).subscribe(obj =>{
+      console.log(obj);
+    });
+
     this.scores.sort(function(a,b){
       return b.score-a.score
     });
