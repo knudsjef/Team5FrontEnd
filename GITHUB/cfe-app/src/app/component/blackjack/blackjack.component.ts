@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { promise } from 'protractor';
 import { BackendApiService } from 'src/app/services/backend-api.service';
 
 @Component({
@@ -10,17 +11,16 @@ export class BlackjackComponent implements OnInit {
 
   playerID:String;
   gameID:number;
+  isTurn:boolean;
 
   
   constructor(private backendApiService: BackendApiService) { }
 
   ngOnInit(): void {
     this.gameID=1;
-    this.playerID="player1";
+    this.playerID="player1";  
+    this.isTurn=false;
     this.hostGame();
-    this.setup();
-    this.deal();
-    
   }
 
   hostGame(){
@@ -30,7 +30,6 @@ export class BlackjackComponent implements OnInit {
     this.backendApiService.backendRequest("hostGame",dict).subscribe(obj =>{
       console.log(obj);
     });
-    this.setup();
   }
   setup(){
     var dict={};
@@ -76,5 +75,23 @@ export class BlackjackComponent implements OnInit {
       console.log(obj);
     });
   }
+  updateAll(){
+    var dict={};
+    dict["gameID"]=this.gameID;
+    dict["method"]="showCards";
+    this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
+      console.log(obj);
+    });
+  }
 
+  checkTurn(){
+    var dict={};
+    dict["gameID"]=this.gameID;
+    dict["method"]="checkIfTurn";
+    dict["hand"]=this.playerID;
+    this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
+      console.log(obj);
+      this.isTurn=obj.isTurn;
+    });
+  }
 }
