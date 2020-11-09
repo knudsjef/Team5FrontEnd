@@ -22,16 +22,17 @@ body {
   #wrapper.toggled #sidebar-wrapper {
     margin-left: 0;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 790px) {
     #sidebar-wrapper {
       margin-left: 0;
+      width: 390px;
     }
     #page-content-wrapper {
       min-width: 0;
       width: 100%;
     }
     #wrapper.toggled #sidebar-wrapper {
-      margin-left: -15rem;
+      margin-left: -20rem;
     }
 }
 .navbar-custom {
@@ -44,10 +45,22 @@ body {
 .navbar-image-sandbox {
     width: 70%;
     height: auto;
-    justify-items: left;
+}
+.navbar-image-leaderboard {
+    width: 100%;
+    height: auto;
 }
 .navbar-drop-image {
     margin-left: 10px;
     height: 40px;
     width: auto;
+}
+.full {
+    background-image: url("/assets/img/Full_Background.png");
+    width: 100%;
+    height: 100%;
+}
+
+.navbar.navbar-2 .navbar-toggler-icon {
+  background-image: url(https://mdbootstrap.com/img/svg/hamburger2.svg);
 }
