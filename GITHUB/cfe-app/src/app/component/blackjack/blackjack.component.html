@@ -1,5 +1,9 @@
 <div style="width: 1920px;height: 1080px;">
-    <button type="button" class="btn btn-primary">Deal</button>
-    <button type="button" class="btn btn-success">Hit</button>
-    <button type="button" class="btn btn-danger">Stay</button>
+    <button type="button" class="btn btn-secondary" (click)="setup()">Setup</button>
+    <button type="button" class="btn btn-primary" (click)="deal()">Deal</button>
+    <button type="button" class="btn btn-success" (click)="hit()">Hit</button>
+    <button type="button" class="btn btn-danger" (click)="stay()">Stay</button>
+    <button type="button" class="btn btn-secondary" (click)="updateHand()">Show Hand</button>
+    <button type="button" class="btn btn-secondary" (click)="updateAll()">Show Cards</button>
+    <button type="button" class="btn btn-secondary" (click)="checkTurn()">Check if Turn</button>
 </div>
