@@ -14,8 +14,9 @@ import { card,makeCard,makeCardFromVals } from 'src/app/models/card';
 export class SandboxComponent implements OnInit {
 
   public cardComponents: CardComponent[] = [];
-  private static instance: SandboxComponent;
+  private static instance: SandboxComponent; //singleton
   constructor() {
+    //sets the singleton
     if (SandboxComponent.instance == null)
     {
       SandboxComponent.instance = this;
@@ -28,6 +29,7 @@ export class SandboxComponent implements OnInit {
     this.cards.cards=[makeCard(1),makeCard(2),makeCard(3)];
   }
 
+  //Places card in front
   public ClearCardsClasses(cardToSetTrue: CardComponent): void
   {
     for (var i = 0; i < this.cardComponents.length; i++)
@@ -37,12 +39,14 @@ export class SandboxComponent implements OnInit {
     cardToSetTrue.lastClickedCard = true;
   }
 
+  //gets the singleton
   public static GetInstance(): SandboxComponent
   {
     return SandboxComponent.instance;
   }
 
-  public AddCard(cardType: string, cardValue: string)
+  //Adds a card to the cards
+  public AddCard(cardType: string, cardValue: string, cardFileName: string)
   {
     this.cards.cards.push(makeCardFromVals(cardType,cardValue));
   }
