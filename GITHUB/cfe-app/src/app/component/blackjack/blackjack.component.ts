@@ -92,6 +92,13 @@ export class BlackjackComponent implements OnInit {
     dict["method"]="showCards";
     this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
       console.log(obj);
+      for(var key in obj){
+        var temp = emptyCardContainer();
+        for(var cardKey in obj[key]){
+         temp.cards.push(makeCard(obj[key][cardKey].cardNum)); 
+        }
+        this.gameContainers.set(key,temp);
+      }
     });
   }
 
