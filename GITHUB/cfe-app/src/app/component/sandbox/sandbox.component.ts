@@ -12,8 +12,9 @@ import { element } from 'protractor';
 export class SandboxComponent implements OnInit {
 
   public cardComponents: CardComponent[] = [];
-  private static instance: SandboxComponent;
+  private static instance: SandboxComponent; //singleton
   constructor() {
+    //sets the singleton
     if (SandboxComponent.instance == null)
     {
       SandboxComponent.instance = this;
@@ -42,6 +43,7 @@ export class SandboxComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //Places card in front
   public ClearCardsClasses(cardToSetTrue: CardComponent): void
   {
     for (var i = 0; i < this.cardComponents.length; i++)
@@ -51,11 +53,13 @@ export class SandboxComponent implements OnInit {
     cardToSetTrue.lastClickedCard = true;
   }
 
+  //gets the singleton
   public static GetInstance(): SandboxComponent
   {
     return SandboxComponent.instance;
   }
 
+  //Adds a card to the cards
   public AddCard(cardType: string, cardValue: string, cardFileName: string)
   {
     this.cards.push({
