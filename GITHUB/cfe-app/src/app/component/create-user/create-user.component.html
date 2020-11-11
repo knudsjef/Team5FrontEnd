@@ -1,0 +1,17 @@
+<h2 style="text-align: center; margin-top: 100px;">Create New Account</h2>
+<div class="container">
+    <form style="text-align:center;" action="/action_page.php" (keydown)="keyPress($event)">
+        <label for="name">Full Name: </label>
+        <input type="text" id="username" name="username"><br>
+        <label for="email">Email: </label>
+        <input type="text" id="email" name="email"><br>
+        <label for="password">Password: </label>
+        <input type="password" id="password" name="password"><br>
+        <label for="password">Confirm Password: </label>
+        <input type="password" id="confirmpassword" name="confirmpassword"><br><br>
+        <button style="width:100%;" type="button" (click)="submitUserFunction()">
+            Submit
+        </button>
+    </form>
+</div>
+<br><br><br>
