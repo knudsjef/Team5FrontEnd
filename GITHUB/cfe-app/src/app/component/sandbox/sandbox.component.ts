@@ -56,4 +56,13 @@ export class SandboxComponent implements OnInit {
     return SandboxComponent.instance;
   }
 
+  public AddCard(cardType: string, cardValue: string, cardFileName: string)
+  {
+    this.cards.push({
+      type: cardType, 
+      value: cardValue,
+      fileName: cardFileName
+  });
+  }
+
 }
