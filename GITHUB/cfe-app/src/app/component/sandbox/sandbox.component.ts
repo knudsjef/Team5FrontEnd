@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { CardComponent } from '../card/card.component';
 import { element } from 'protractor';
+import { cardContainer } from 'src/app/models/cardContainer';
+import { card,makeCard,makeCardFromVals } from 'src/app/models/card';
 
 @Component({
   selector: 'app-sandbox',
@@ -21,26 +23,10 @@ export class SandboxComponent implements OnInit {
     }
    }
 
-  cards: any[] =
-  [
-    {
-      type: "Diamonds",
-      value: "1",
-      fileName: '1.jpg'
-    },
-    {
-      type: "Diamonds",
-      value: "2",
-      fileName: '2.jpg'
-    },
-    {
-      type: "Diamonds",
-      value: "3",
-      fileName: '3.jpg'
-    }
-  ];
+  cards:cardContainer = new cardContainer;
 
   ngOnInit(): void {
+    this.cards.cards=[makeCard(1),makeCard(2),makeCard(3)];
   }
 
   //Places card in front
@@ -62,11 +48,7 @@ export class SandboxComponent implements OnInit {
   //Adds a card to the cards
   public AddCard(cardType: string, cardValue: string, cardFileName: string)
   {
-    this.cards.push({
-      type: cardType, 
-      value: cardValue,
-      fileName: cardFileName
-  });
+    this.cards.cards.push(makeCardFromVals(cardType,cardValue));
   }
 
 }
