@@ -50,11 +50,13 @@ export class CardComponent implements OnInit {
     this.GetImageSource();
   }
 
+  //Changes the scss classes
   public ChangeClass(): void
   {
     SandboxComponent.GetInstance().ClearCardsClasses(this);
   }
 
+  //Will get the current position in x and y coordinates of the card
   public GetPosition(event: CdkDragEnd): void
   {
     //this.xPos = event.source._dragRef.getFreeDragPosition().x;
@@ -62,6 +64,7 @@ export class CardComponent implements OnInit {
     //console.log(this.xPos, this.yPos);
   }
 
+  //Flips the card when double clicked
   FlipCardOnDoubleClick(){
     this.isFlipped = !this.isFlipped;
     //this.flipping = true;
@@ -72,6 +75,7 @@ export class CardComponent implements OnInit {
     //}, 250);
   }
 
+  //Determines the image source
  GetImageSource()
  {
     if (!this.isFlipped)
