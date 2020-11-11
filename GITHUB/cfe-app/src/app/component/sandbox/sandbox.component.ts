@@ -3,7 +3,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { CardComponent } from '../card/card.component';
 import { element } from 'protractor';
 import { cardContainer } from 'src/app/models/cardContainer';
-import { makeCard } from 'src/app/models/card';
+import { card,makeCard,makeCardFromVals } from 'src/app/models/card';
 
 @Component({
   selector: 'app-sandbox',
@@ -42,13 +42,9 @@ export class SandboxComponent implements OnInit {
     return SandboxComponent.instance;
   }
 
-  public AddCard(cardType: string, cardValue: string, cardFileName: string)
+  public AddCard(cardType: string, cardValue: string)
   {
-    this.cards.push({
-      type: cardType, 
-      value: cardValue,
-      fileName: cardFileName
-  });
+    this.cards.cards.push(makeCardFromVals(cardType,cardValue));
   }
 
 }

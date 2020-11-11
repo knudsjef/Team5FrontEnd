@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { promise } from 'protractor';
+import { card, makeCard } from 'src/app/models/card';
+import { cardContainer } from 'src/app/models/cardContainer';
 import { BackendApiService } from 'src/app/services/backend-api.service';
 
 @Component({
@@ -12,6 +14,7 @@ export class BlackjackComponent implements OnInit {
   playerID:String;
   gameID:number;
   isTurn:boolean;
+  gameContainers:Map<String,cardContainer>;
 
   
   constructor(private backendApiService: BackendApiService) { }
@@ -21,6 +24,9 @@ export class BlackjackComponent implements OnInit {
     this.playerID="player1";  
     this.isTurn=false;
     this.hostGame();
+    this.gameContainers=new Map<String,cardContainer>();
+    this.gameContainers.set(this.playerID, new cardContainer());
+    this.gameContainers.set("dealer", new cardContainer());
   }
 
   hostGame(){
@@ -73,6 +79,13 @@ export class BlackjackComponent implements OnInit {
     dict["hand"]=this.playerID;
     this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
       console.log(obj);
+      this.gameContainers.set(this.playerID,new cardContainer())
+      var temp:cardContainer=this.gameContainers.get(this.playerID);
+      for(var i = 0;i<obj.length;i++){
+        temp.cards.push(makeCard(obj[i].cardNum));
+      }
+      console.log(temp);
+      console.log("gamecontainers",this.gameContainers);
     });
   }
   updateAll(){
