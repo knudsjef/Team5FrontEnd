@@ -1,3 +1,5 @@
+
+<!-- Buttons to select Game Leaderboard-->
 <div>
     <div class="Leaderboard-Buttons">
     <button (click)="getLeaderboard('BlackJack')" type="button" class="btn btn-success" >Black Jack</button>
@@ -5,19 +7,20 @@
     </div>
 
 <div class="Leaderboard-Table">
-<table mat-table [dataSource] = "dataSource" > 
+    <!-- Table that gets datt from dataSource variable-->
+<table mat-table [dataSource] = "getDataSource()" > 
  
     
     <!-- Name Column -->
     <ng-container matColumnDef="Name">
-        <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td mat-cell *matCellDef="let scores">{{scores.real_name}} </td>
+        <th mat-header-cell *matHeaderCellDef style ="color:white"><b>Name</b></th>
+        <td mat-cell *matCellDef="let scores" style ="color:white"><b>{{scores.real_name}} </b></td>
     </ng-container>
 
     <!-- Score Column -->
     <ng-container matColumnDef="Score">
-        <th mat-header-cell *matHeaderCellDef>Score</th>
-        <td mat-cell *matCellDef="let scores" >{{scores.score}}</td>
+        <th mat-header-cell *matHeaderCellDef style ="color:white"><b>Score</b></th>
+        <td mat-cell *matCellDef="let scores" style ="color:white"><b>{{scores.score}}</b></td>
     </ng-container>
 
 
