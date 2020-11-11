@@ -24,6 +24,8 @@ import { SandboxComponent } from './component/sandbox/sandbox.component';
 import { CardComponent } from './component/card/card.component';
 import { LeaderboardComponent } from './component/leaderboard/leaderboard.component';
 import { BlackjackComponent } from './component/blackjack/blackjack.component';
+import { LoginComponent } from './component/login/login.component';
+import { CreateUserComponent } from './component/create-user/create-user.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { BlackjackComponent } from './component/blackjack/blackjack.component';
     MultiplayerComponent,
     SandboxComponent,
     CardComponent,
-    LeaderboardComponent
+    LeaderboardComponent,
+    LoginComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,

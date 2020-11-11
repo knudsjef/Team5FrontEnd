@@ -1,6 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { CdkDragEnd } from '@angular/cdk/drag-drop';
-import { Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import { FixedSizeVirtualScrollStrategy } from '@angular/cdk/scrolling';
+import { Component, ElementRef, Input, OnInit, TRANSLATIONS, ViewChild} from '@angular/core';
 import { SandboxComponent } from '../sandbox/sandbox.component';
 
 @Component({
@@ -11,10 +12,12 @@ import { SandboxComponent } from '../sandbox/sandbox.component';
     trigger('FlipCard',
     [
       state('NotFlipped', style({
-        transform: 'rotateY(90deg)'
+        transform: 'rotateY(90deg)',
+        position: 'absolute'
       })),
       state('Flipped', style({
-        transform: 'rotateY(0deg)'
+        transform: 'rotateY(0deg)',
+        position: 'absolute'
       })),
       transition('NotFlipped <=> Flipped',
       [
@@ -29,11 +32,13 @@ export class CardComponent implements OnInit {
   source: string;
   xPos: Number;
   yPos: Number;
+  initialPosition;
   flipping: Boolean = false;
   isFlipped: Boolean = false;
   public lastClickedCard: boolean = false;
 
   constructor(private element: ElementRef) {
+    this.initialPosition = this.element.nativeElement.getBoundingClientRect();
   }
 
   ngOnInit(): void {
@@ -50,22 +55,21 @@ export class CardComponent implements OnInit {
     SandboxComponent.GetInstance().ClearCardsClasses(this);
   }
 
-  public GetPosition(e: CdkDragEnd): void
+  public GetPosition(event: CdkDragEnd): void
   {
-    let rect = this.element.nativeElement.getBoundingClientRect();
-    this.xPos = rect.x + e.source.getFreeDragPosition().x;
-    this.yPos = rect.y + e.source.getFreeDragPosition().y
-    console.log(this.xPos, this.yPos);
+    //this.xPos = event.source._dragRef.getFreeDragPosition().x;
+    //this.yPos = event.source._dragRef.getFreeDragPosition().y;
+    //console.log(this.xPos, this.yPos);
   }
 
   FlipCardOnDoubleClick(){
     this.isFlipped = !this.isFlipped;
-    this.flipping = true;
-    setTimeout(() => 
-    {
+    //this.flipping = true;
+    //setTimeout(() => 
+    //{
       this.GetImageSource();
-      this.flipping = false;
-    }, 250);
+      //this.flipping = false;
+    //}, 250);
   }
 
  GetImageSource()
