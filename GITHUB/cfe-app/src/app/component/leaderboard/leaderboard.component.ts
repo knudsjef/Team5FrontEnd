@@ -1,3 +1,4 @@
+import { ArrayDataSource, DataSource } from '@angular/cdk/collections';
 import { Component, OnInit } from '@angular/core';
 import { BackendApiService } from 'src/app/services/backend-api.service';
 
@@ -14,35 +15,29 @@ export interface Scores {
 
 export class LeaderboardComponent implements OnInit {
 
+  dataSource;
+  displayedColumns: string[] = ['Name', "Score"];
+
   constructor(private backendApiService: BackendApiService) {
 
 
   }
   
-   scores: Scores[] =
-   [
-     { name: 'Peter', score: 120 },
-     { name: 'Richard', score: 110 },
-     { name: 'Carter', score: 400},
-     { name: 'Brenda', score: 300},
-     { name: 'Sam', score: 350}
-    
-   ];
-  
-  dataSource = this.scores;
-  displayedColumns: string[] = ['Name', "Score"];
+
   
   ngOnInit(): void {
-    var dict={};
-    dict["gameType"]="blackjack";
-    this.backendApiService.backendRequest("getLeaderboard",dict).subscribe(obj =>{
-      console.log(obj);
-    });
+    var dict = {}
+    dict["gameType"] = "BlackJack";
+    this.backendApiService.backendRequest("getLeaderboard",dict).subscribe(obj =>{this.dataSource = obj.results}
+      );
 
-    this.scores.sort(function(a,b){
-      return b.score-a.score
-    });
   }
+  public getLeaderboard(gameName: String){
+    var dict ={};
+    dict["gameType"]=gameName;
+    this.backendApiService.backendRequest("getLeaderboard",dict).subscribe(obj =>{this.dataSource = obj.results}
+      );
 
+  }
 }
 

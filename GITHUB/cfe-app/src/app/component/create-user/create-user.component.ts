@@ -14,8 +14,8 @@ export class CreateUserComponent implements OnInit {
   constructor(private backendApiService: BackendApiService, private route: ActivatedRoute, private router: Router) { }
 
   re = new RegExp('[a-zA-Z0-9._%+-^@]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+'); //regex used to check if email is in correct format
-
-  submitUserFunction() { //when form is submitted, get the values and pass them to the server
+/** Function when the form is submitted, get the values and pass them to the server */
+  submitUserFunction() { 
     var username = "'" + (<HTMLInputElement>document.getElementById("username")).value + "'"; //get username
     var email = "'" + (<HTMLInputElement>document.getElementById("email")).value + "'"; //get email
     var hash = "'" + CryptoJS.MD5((<HTMLInputElement>document.getElementById("password")).value) + "'"; //get password and hash it immediately
@@ -41,6 +41,7 @@ export class CreateUserComponent implements OnInit {
       });
     }
   }
+  /** Event function that looks for the 'Enter' key being pressed */
   keyPress(Event){
     if(Event.keyCode==13){
       this.submitUserFunction(); //submits create user if enter is pressed

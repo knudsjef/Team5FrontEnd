@@ -17,7 +17,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HostComponent } from './component/host/host.component';
-import { TestPageComponent } from './component/testingGrounds/test-page/test-page.component';
 import { SingleplayerComponent } from './component/singleplayer/singleplayer.component';
 import { MultiplayerComponent } from './component/multiplayer/multiplayer.component';
 import { SandboxComponent } from './component/sandbox/sandbox.component';
@@ -34,7 +33,6 @@ import { CreateUserComponent } from './component/create-user/create-user.compone
     RoutingComponents,
     HomepageComponent,
     HostComponent,
-    TestPageComponent,
     SingleplayerComponent,
     MultiplayerComponent,
     SandboxComponent,
