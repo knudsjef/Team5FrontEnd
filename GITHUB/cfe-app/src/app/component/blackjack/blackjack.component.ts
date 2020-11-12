@@ -19,17 +19,18 @@ export class BlackjackComponent implements OnInit {
   
   constructor(private backendApiService: BackendApiService) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.gameID=1;
     this.playerID="player1";  
     this.isTurn=false;
-    this.hostGame();
+    await this.hostGame();
+    this.setup();
     this.gameContainers=new Map<String,cardContainer>();
     this.gameContainers.set(this.playerID, emptyCardContainer());
     this.gameContainers.set("dealer", emptyCardContainer());
   }
 
-  hostGame(){
+  async hostGame(){
     var dict={};
     dict["gameID"]=this.gameID;
     dict["gameType"]="blackjack";
