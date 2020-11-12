@@ -6,5 +6,10 @@
     <button type="button" class="btn btn-secondary" (click)="updateHand()">Show Hand</button>
     <button type="button" class="btn btn-secondary" (click)="updateAll()">Show Cards</button>
     <button type="button" class="btn btn-secondary" (click)="checkTurn()">Check if Turn</button>
-    <app-sandbox></app-sandbox>
+    <div *ngFor="let card of this.gameContainers[this.playerId].cards">
+        <app-card
+            [type] = "card.type"
+            [number] = "card.number">
+        </app-card>
+    <div>
 </div>
