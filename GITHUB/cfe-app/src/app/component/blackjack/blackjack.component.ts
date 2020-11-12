@@ -28,6 +28,8 @@ export class BlackjackComponent implements OnInit {
     this.gameContainers=new Map<String,cardContainer>();
     this.gameContainers.set(this.playerID, emptyCardContainer());
     this.gameContainers.set("dealer", emptyCardContainer());
+    this.gameContainers.get(this.playerID).cards.push(makeCard(36));
+    console.log(this.gameContainers.get(this.playerID).cards);
   }
 
   async hostGame(){
