@@ -21,15 +21,13 @@ export class BlackjackComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.gameID=1;
-    this.playerID="player1";  
+    this.playerID="player1";
     this.isTurn=false;
     await this.hostGame();
     this.setup();
     this.gameContainers=new Map<String,cardContainer>();
     this.gameContainers.set(this.playerID, emptyCardContainer());
     this.gameContainers.set("dealer", emptyCardContainer());
-    this.gameContainers.get(this.playerID).cards.push(makeCard(36));
-    console.log(this.gameContainers.get(this.playerID).cards);
   }
 
   async hostGame(){
