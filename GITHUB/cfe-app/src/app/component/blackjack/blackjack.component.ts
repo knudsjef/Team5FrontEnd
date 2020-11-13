@@ -38,7 +38,7 @@ export class BlackjackComponent implements OnInit {
       console.log(obj);
     });
   }
-  setup(){
+  async setup(){
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="setup";
@@ -47,24 +47,26 @@ export class BlackjackComponent implements OnInit {
       console.log(obj);
     });
   }
-  deal(){
+  async deal(){
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="deal";
-    this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
+    this.backendApiService.backendRequest("blackjack",dict).subscribe(async obj =>{
       console.log(obj);
+      await this.updateHand();
     });
   }
-  hit(){
+  async hit(){
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="hit";
     dict["hand"]=this.playerID;
-    this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
+    this.backendApiService.backendRequest("blackjack",dict).subscribe(async obj =>{
       console.log(obj);
+      await this.updateHand();
     });
   }
-  stay(){
+  async stay(){
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="stay";
@@ -73,7 +75,7 @@ export class BlackjackComponent implements OnInit {
       console.log(obj);
     });
   }
-  updateHand(){
+  async updateHand(){
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="getHand";
@@ -87,7 +89,7 @@ export class BlackjackComponent implements OnInit {
       console.log(this.gameContainers);
     });
   }
-  updateAll(){
+  async updateAll(){
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="showCards";
@@ -103,7 +105,7 @@ export class BlackjackComponent implements OnInit {
     });
   }
 
-  checkTurn(){
+  async checkTurn(){
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="checkIfTurn";
