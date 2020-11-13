@@ -15,6 +15,9 @@ export class BlackjackComponent implements OnInit {
   gameID:number;
   isTurn:boolean;
   gameContainers:Map<String,cardContainer>;
+  lastRoundPlayer:String;
+  lastRoundDealer:String;
+  lastRound:String;
 
   
   constructor(private backendApiService: BackendApiService) { }
@@ -28,6 +31,9 @@ export class BlackjackComponent implements OnInit {
     this.gameContainers=new Map<String,cardContainer>();
     this.gameContainers.set(this.playerID, emptyCardContainer());
     this.gameContainers.set("dealer", emptyCardContainer());
+    this.lastRound="";
+    this.lastRoundPlayer="";
+    this.lastRoundDealer="";
   }
 
   async hostGame(){
@@ -71,8 +77,9 @@ export class BlackjackComponent implements OnInit {
     dict["gameID"]=this.gameID;
     dict["method"]="stay";
     dict["hand"]=this.playerID;
-    this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
+    this.backendApiService.backendRequest("blackjack",dict).subscribe(async obj =>{
       console.log(obj);
+      await this.checkTurn();
     });
   }
   async updateHand(){
@@ -111,7 +118,10 @@ export class BlackjackComponent implements OnInit {
     dict["method"]="checkIfTurn";
     dict["hand"]=this.playerID;
     this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
-      console.log(obj);
+      // console.log(obj);
+      this.lastRoundDealer = "Dealer: " + obj["DealerScore"];
+      this.lastRoundPlayer = "Player: " + obj["PlayerScore"];
+      this.lastRound = obj["WinOrLose"];
       this.isTurn=obj.isTurn;
     });
   }

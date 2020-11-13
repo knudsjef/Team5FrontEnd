@@ -2,9 +2,9 @@
     <button type="button" class="btn btn-primary" (click)="deal()">Deal</button>
     <button type="button" class="btn btn-success" (click)="hit()">Hit</button>
     <button type="button" class="btn btn-danger" (click)="stay()">Stay</button>
-    <button type="button" class="btn btn-secondary" (click)="updateHand()">Show Hand</button>
-    <button type="button" class="btn btn-secondary" (click)="updateAll()">Show Cards</button>
-    <button type="button" class="btn btn-secondary" (click)="checkTurn()">Check if Turn</button>
+    
+    <div style="font-size:36px;color:white">{{lastRound}} {{lastRoundDealer}} {{lastRoundPlayer}}</div>
+    
     <div *ngFor="let card of gameContainers.get(playerID).cards">
         <app-card
             [type]="card.type"
