@@ -10,8 +10,8 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class BackendApiService {
 
-  // private baseUrl: string = "https://nimmo.us/";
-  private baseUrl: string = "http://localhost:8090/";
+  private baseUrl: string = "https://nimmo.us/";
+  // private baseUrl: string = "http://localhost:8090/";
 
   constructor(private http: HttpClient, private cookieService: CookieService) { }
 
