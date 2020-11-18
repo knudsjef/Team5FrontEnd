@@ -2,6 +2,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { CdkDragEnd } from '@angular/cdk/drag-drop';
 import { FixedSizeVirtualScrollStrategy } from '@angular/cdk/scrolling';
 import { Component, ElementRef, Input, OnInit, TRANSLATIONS, ViewChild} from '@angular/core';
+import { BlackjackComponent } from '../blackjack/blackjack.component';
 import { SandboxComponent } from '../sandbox/sandbox.component';
 
 @Component({
@@ -42,7 +43,7 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    while(SandboxComponent.GetInstance() == null)
+    while(SandboxComponent.GetInstance() == null && BlackjackComponent.GetInstance() == null)
     {
       //Wait for SandboxComponent to be initialized
     }

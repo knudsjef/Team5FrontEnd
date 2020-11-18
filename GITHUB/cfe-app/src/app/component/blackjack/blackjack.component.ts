@@ -15,25 +15,30 @@ export class BlackjackComponent implements OnInit {
   gameID:number;
   isTurn:boolean;
   gameContainers:Map<String,cardContainer>;
+  static instance: BlackjackComponent;
   lastRoundPlayer:String;
   lastRoundDealer:String;
   lastRound:String;
-
   
   constructor(private backendApiService: BackendApiService) { }
 
   async ngOnInit(): Promise<void> {
     this.gameID=1;
-    this.playerID="player1";
+    this.playerID="player1";  
     this.isTurn=false;
     await this.hostGame();
     this.setup();
     this.gameContainers=new Map<String,cardContainer>();
     this.gameContainers.set(this.playerID, emptyCardContainer());
     this.gameContainers.set("dealer", emptyCardContainer());
-    this.lastRound="";
-    this.lastRoundPlayer="";
-    this.lastRoundDealer="";
+    this.gameContainers.get(this.playerID).cards.push(makeCard(36));
+    console.log(this.gameContainers.get(this.playerID).cards);
+    BlackjackComponent.instance = this;
+  }
+
+  static GetInstance(): BlackjackComponent
+  {
+    return BlackjackComponent.instance;
   }
 
   async hostGame(){
@@ -44,7 +49,7 @@ export class BlackjackComponent implements OnInit {
       console.log(obj);
     });
   }
-  async setup(){
+  setup(){
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="setup";
@@ -53,36 +58,33 @@ export class BlackjackComponent implements OnInit {
       console.log(obj);
     });
   }
-  async deal(){
+  deal(){
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="deal";
-    this.backendApiService.backendRequest("blackjack",dict).subscribe(async obj =>{
+    this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
       console.log(obj);
-      await this.updateHand();
     });
   }
-  async hit(){
+  hit(){
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="hit";
     dict["hand"]=this.playerID;
-    this.backendApiService.backendRequest("blackjack",dict).subscribe(async obj =>{
+    this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
       console.log(obj);
-      await this.updateHand();
     });
   }
-  async stay(){
+  stay(){
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="stay";
     dict["hand"]=this.playerID;
-    this.backendApiService.backendRequest("blackjack",dict).subscribe(async obj =>{
+    this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
       console.log(obj);
-      await this.checkTurn();
     });
   }
-  async updateHand(){
+  updateHand(){
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="getHand";
@@ -96,7 +98,7 @@ export class BlackjackComponent implements OnInit {
       console.log(this.gameContainers);
     });
   }
-  async updateAll(){
+  updateAll(){
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="showCards";
@@ -112,16 +114,13 @@ export class BlackjackComponent implements OnInit {
     });
   }
 
-  async checkTurn(){
+  checkTurn(){
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="checkIfTurn";
     dict["hand"]=this.playerID;
     this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
-      // console.log(obj);
-      this.lastRoundDealer = "Dealer: " + obj["DealerScore"];
-      this.lastRoundPlayer = "Player: " + obj["PlayerScore"];
-      this.lastRound = obj["WinOrLose"];
+      console.log(obj);
       this.isTurn=obj.isTurn;
     });
   }
