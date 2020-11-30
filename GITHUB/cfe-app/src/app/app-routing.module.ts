@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BlackjackComponent } from './component/blackjack/blackjack.component';
 import { CreateUserComponent } from './component/create-user/create-user.component';
 import { HomepageComponent } from './component/homepage/homepage.component';
+import { JoinGameComponent } from './component/join-game/join-game.component';
 import { LeaderboardComponent } from './component/leaderboard/leaderboard.component';
 import { LoginComponent } from './component/login/login.component';
 import { MultiplayerComponent } from './component/multiplayer/multiplayer.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'sandbox', component: SandboxComponent },
   { path: 'leaderboard', component: LeaderboardComponent},
   { path: 'blackjack', component: BlackjackComponent },
+  { path: 'join game', component: JoinGameComponent},
   { path: 'login', component: LoginComponent},
   { path: 'createUser', component: CreateUserComponent}
 ];

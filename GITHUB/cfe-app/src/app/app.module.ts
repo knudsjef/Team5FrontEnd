@@ -25,6 +25,7 @@ import { LeaderboardComponent } from './component/leaderboard/leaderboard.compon
 import { BlackjackComponent } from './component/blackjack/blackjack.component';
 import { LoginComponent } from './component/login/login.component';
 import { CreateUserComponent } from './component/create-user/create-user.component';
+import { JoinGameComponent } from './component/join-game/join-game.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CreateUserComponent } from './component/create-user/create-user.compone
     CardComponent,
     LeaderboardComponent,
     LoginComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    JoinGameComponent
   ],
   imports: [
     BrowserModule,
