@@ -23,11 +23,10 @@ export class BlackjackComponent implements OnInit {
   constructor(private backendApiService: BackendApiService) { }
 
   async ngOnInit(): Promise<void> {
-    this.gameID=1;
     this.playerID="player1";
     this.isTurn=false;
     await this.hostGame();
-    this.setup();
+    // await this.setup();
     this.gameContainers=new Map<String,cardContainer>();
     this.gameContainers.set(this.playerID, emptyCardContainer());
     this.gameContainers.set("dealer", emptyCardContainer());
@@ -38,17 +37,28 @@ export class BlackjackComponent implements OnInit {
 
   async hostGame(){
     var dict={};
-    dict["gameID"]=this.gameID;
     dict["gameType"]="blackjack";
-    this.backendApiService.backendRequest("hostGame",dict).subscribe(obj =>{
+    this.backendApiService.backendRequest("hostGame",dict).subscribe(async obj =>{
       console.log(obj);
+      this.gameID=obj.blackjack;
+      console.log("host",this.gameID);
+      await this.setup();
     });
   }
   async setup(){
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="setup";
-    dict["numPlayers"]=1;
+    dict["numPlayers"]=2;
+    console.log(dict);
+    this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
+      console.log("setup",obj);
+    });
+  }
+  async getGames(){
+    var dict={};
+    dict["gameID"]=this.gameID;
+    dict["method"]="getGames";
     this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
       console.log(obj);
     });
