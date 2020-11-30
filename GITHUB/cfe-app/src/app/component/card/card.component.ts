@@ -43,11 +43,6 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    while(SandboxComponent.GetInstance() == null && BlackjackComponent.GetInstance() == null)
-    {
-      //Wait for SandboxComponent to be initialized
-    }
-    SandboxComponent.GetInstance().cardComponents.push(this);
     this.GetImageSource();
   }
 
