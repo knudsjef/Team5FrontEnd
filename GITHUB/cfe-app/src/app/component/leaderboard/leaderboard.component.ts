@@ -2,10 +2,6 @@ import { ArrayDataSource, DataSource } from '@angular/cdk/collections';
 import { Component, OnInit } from '@angular/core';
 import { BackendApiService } from 'src/app/services/backend-api.service';
 
-export interface Scores {
-  name: string;
-  score: number;
-}
 
 @Component({
   selector: 'app-leaderboard',
@@ -26,10 +22,11 @@ export class LeaderboardComponent implements OnInit {
 
   
   ngOnInit(): void {
-    /**Make table load black jack leaderboard by default */
-    var dict = {}
-    dict["gameType"] = "BlackJack";
-    this.backendApiService.backendRequest("getLeaderboard",dict).subscribe(obj =>{this.dataSource = obj.results}
+
+      /**Make table load black jack leaderboard by default */
+      var dict = {}
+      dict["gameType"] = "BlackJack";
+      this.backendApiService.backendRequest("getLeaderboard",dict).subscribe(obj =>{this.dataSource = obj.results}
       );
 
   }
