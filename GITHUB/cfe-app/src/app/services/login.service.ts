@@ -45,10 +45,7 @@ export class LoginService {
     this.cookieService.delete('userID');
     this.cookieService.delete('certificate');
   }
-  public isAdmin() {
-    return this.getRole() == "admin";
-  }
-
+ 
   submitLoginFunction(email: string, hash: string): Observable<any> { //when user clicks submit for login, run these commands
     var dict = { "hash": hash, "email": email }; //put variables into a dictionary
     dict["certificate"] = this.getCertificate();
