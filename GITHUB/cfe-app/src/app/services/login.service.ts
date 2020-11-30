@@ -11,9 +11,8 @@ export class LoginService {
   constructor(private cookieService: CookieService, private backendApiService: BackendApiService, private router: Router) {
   }
 
-  public login(userrole: string, username: string, useremail: string, id: number, certificate: string): void {
+  public login(username: string, useremail: string, id: number, certificate: string): void {
     this.cookieService.set('loggedIn', 'true');
-    this.cookieService.set('role', userrole);
     this.cookieService.set('name', username);
     this.cookieService.set('email', useremail);
     this.cookieService.set('userID', id.toString());

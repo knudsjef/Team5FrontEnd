@@ -37,7 +37,8 @@ export class LoginComponent implements OnInit {
           alert("Invalid Username Or Password");
         }
         else{ //take the role, name, and userid that was returned and store it for use later
-          this.loginService.login(obj.results[0].role,obj.results[0].name,email,obj.results[0].id,obj.certificate);
+          console.log(obj.results);
+          this.loginService.login(obj.results[0].real_name,email,obj.results[0].user_id,obj.certificate);
           this.router.navigateByUrl('/'); //return to home page
         }
       });  
