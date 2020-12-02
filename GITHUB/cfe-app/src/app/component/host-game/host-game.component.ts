@@ -14,21 +14,22 @@ export class HostGameComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     await this.hostGame();
+    
   }
   async hostGame(){
     var dict={};
-    dict["gameID"]=this.gameID;
     dict["gameType"]="blackjack";
-    this.backendApiService.backendRequest("hostGame",dict).subscribe(obj =>{
+    this.backendApiService.backendRequest("hostGame",dict).subscribe(async obj =>{
       console.log(obj);
       this.gameID = obj.blackjack;
+      await this.joinGame();
     });
+    
   }
   async setup(){
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="setup";
-    dict["numPlayers"]=2;
     console.log(dict);
     this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
       console.log("setup",obj);
