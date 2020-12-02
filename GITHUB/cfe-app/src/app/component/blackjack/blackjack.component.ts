@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
 import { promise } from 'protractor';
 import { interval, Subscription } from 'rxjs';
 import { card, makeCard } from 'src/app/models/card';
@@ -12,7 +13,6 @@ import { BackendApiService } from 'src/app/services/backend-api.service';
   styleUrls: ['./blackjack.component.scss']
 })
 export class BlackjackComponent implements OnInit {
-
   @Input() playerID:String;
   @Input() gameID:number;
   isTurn:boolean;
@@ -27,15 +27,17 @@ export class BlackjackComponent implements OnInit {
  
 
   testFunc(){
-    console.log("test");
+    console.log(this.playerID,this.gameID);
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
   
-  constructor(private backendApiService: BackendApiService) { }
+  constructor(private backendApiService: BackendApiService, private route: ActivatedRoute) { }
 
   async ngOnInit(): Promise<void> {
+    this.gameID = Number(this.route.snapshot.paramMap.get('gameID'));
+    this.playerID = this.route.snapshot.paramMap.get('playerID');
     this.isTurn=false;
     this.gameContainers=new Map<String,cardContainer>();
     this.gameContainers.set(this.playerID, emptyCardContainer());
@@ -77,14 +79,14 @@ export class BlackjackComponent implements OnInit {
   //     console.log(this.playerID);
   //   });
   // }
-  // async getGames(){
-  //   var dict={};
-  //   dict["gameID"]=this.gameID;
-  //   dict["method"]="getGames";
-  //   this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
-  //     console.log(obj);
-  //   });
-  // }
+  async getGames(){
+    var dict={};
+    dict["gameID"]=this.gameID;
+    dict["method"]="getGames";
+    this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
+      console.log(obj);
+    });
+  }
   async deal(){
     var dict={};
     dict["gameID"]=this.gameID;
