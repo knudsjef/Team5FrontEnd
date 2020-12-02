@@ -9,7 +9,8 @@ import { BackendApiService } from 'src/app/services/backend-api.service';
 export class JoinGameComponent implements OnInit {
 
 
-  currentGames:Map<number,String>
+  currentGameIDs:number[];
+  currentGamePlayerNums:number[];
   playerID:number
 
   constructor(private backendApiService: BackendApiService) { }
@@ -21,8 +22,8 @@ export class JoinGameComponent implements OnInit {
     var dict={};
     dict["gameType"]="blackjack";
     this.backendApiService.backendRequest("getGames",dict).subscribe(obj =>{
-      console.log(obj);
-      this.currentGames = obj;
+      this.currentGameIDs = Object.keys(obj).map(key=>Number(key));
+      this.currentGamePlayerNums = Object.keys(obj).map(key=>Number(obj[key]));
     });
   }
   async joinGame(gameID:number){
