@@ -50,7 +50,6 @@ export class BlackjackComponent implements OnInit {
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="setup";
-    dict["numPlayers"]=2;
     console.log(dict);
     this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
       console.log("setup",obj);
@@ -61,6 +60,7 @@ export class BlackjackComponent implements OnInit {
     dict["gameID"]=this.gameID;
     this.backendApiService.backendRequest("joinGame",dict).subscribe(obj =>{
       console.log("join",obj);
+      this.playerID=obj.playerID;
     });
   }
   async getGames(){
