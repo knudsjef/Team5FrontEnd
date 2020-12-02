@@ -23,15 +23,11 @@ export class BlackjackComponent implements OnInit {
   constructor(private backendApiService: BackendApiService) { }
 
   async ngOnInit(): Promise<void> {
-    this.playerID="player1";
     this.isTurn=false;
     await this.hostGame();
-    // await this.setup();
     this.gameContainers=new Map<String,cardContainer>();
     this.gameContainers.set(this.playerID, emptyCardContainer());
     this.gameContainers.set("dealer", emptyCardContainer());
-    this.gameContainers.get(this.playerID).cards.push(makeCard(36));
-    console.log(this.gameContainers.get(this.playerID).cards);
     BlackjackComponent.instance = this;
   }
 
@@ -50,7 +46,7 @@ export class BlackjackComponent implements OnInit {
       await this.setup();
     });
   }
-  setup(){
+  async setup(){
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="setup";
@@ -58,6 +54,13 @@ export class BlackjackComponent implements OnInit {
     console.log(dict);
     this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
       console.log("setup",obj);
+    });
+  }
+  async joinGame(){
+    var dict={};
+    dict["gameID"]=this.gameID;
+    this.backendApiService.backendRequest("joinGame",dict).subscribe(obj =>{
+      console.log("join",obj);
     });
   }
   async getGames(){
@@ -68,7 +71,7 @@ export class BlackjackComponent implements OnInit {
       console.log(obj);
     });
   }
-  deal(){
+  async deal(){
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="deal";
@@ -76,7 +79,7 @@ export class BlackjackComponent implements OnInit {
       console.log(obj);
     });
   }
-  hit(){
+  async hit(){
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="hit";
@@ -85,7 +88,9 @@ export class BlackjackComponent implements OnInit {
       console.log(obj);
     });
   }
-  stay(){
+  async stay(){
+    console.log(this.gameID);
+    console.log(this.gameContainers);
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="stay";
@@ -94,7 +99,7 @@ export class BlackjackComponent implements OnInit {
       console.log(obj);
     });
   }
-  updateHand(){
+  async updateHand(){
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="getHand";
@@ -108,7 +113,7 @@ export class BlackjackComponent implements OnInit {
       console.log(this.gameContainers);
     });
   }
-  updateAll(){
+  async updateAll(){
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="showCards";
@@ -124,7 +129,7 @@ export class BlackjackComponent implements OnInit {
     });
   }
 
-  checkTurn(){
+  async checkTurn(){
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="checkIfTurn";

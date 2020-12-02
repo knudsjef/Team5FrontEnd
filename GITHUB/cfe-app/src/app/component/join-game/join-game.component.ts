@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BackendApiService } from 'src/app/services/backend-api.service';
 
 @Component({
   selector: 'app-join-game',
@@ -6,17 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./join-game.component.scss']
 })
 export class JoinGameComponent implements OnInit {
-  backendApiService: any;
 
-  constructor() { }
+  constructor(private backendApiService: BackendApiService) { }
 
   ngOnInit(): void {
   }
   async getGames(){
     var dict={};
-    dict["gameID"]=0;
-    dict["method"]="getGames";
-    this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
+    dict["gameType"]="blackjack";
+    this.backendApiService.backendRequest("getGames",dict).subscribe(obj =>{
       console.log(obj);
     });
   }

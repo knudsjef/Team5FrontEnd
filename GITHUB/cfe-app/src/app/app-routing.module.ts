@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'sandbox', component: SandboxComponent },
   { path: 'leaderboard', component: LeaderboardComponent},
   { path: 'blackjack', component: BlackjackComponent },
-  { path: 'join game', component: JoinGameComponent},
+  { path: 'join-game', component: JoinGameComponent},
   { path: 'login', component: LoginComponent},
   { path: 'createUser', component: CreateUserComponent}
 ];
