@@ -29,11 +29,12 @@ export class LoginComponent implements OnInit {
       /**
        * Login user query to backend server.
        * The password hash and the email entered by the user are passed in.
-       * Returns a named error is credentials are invalid 
+       * Returns a named error if credentials are invalid 
        * and returns the name, email, user id, and cookie verification certificate if valid
        */
       this.loginService.submitLoginFunction(email,hash.toString()).subscribe(obj =>{
-        if(obj.results==""){ //If the server returns nothing, the username or password was incorrect, try again
+        console.log(obj.results);
+        if(obj.results==null){ //If the server returns nothing, the username or password was incorrect, try again
           alert("Invalid Username Or Password");
         }
         else{ //take the role, name, and userid that was returned and store it for use later
