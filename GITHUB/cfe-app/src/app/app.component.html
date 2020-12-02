@@ -12,26 +12,26 @@
        
     </div>
     <div class="list-group list-group-flush">
-      <a class="btn" [routerLink]="['/login']"><img style="display:inline-block;" src="assets/img/login.png" class="navbar-image-login"></a>
+      <p *ngIf="this.loginService.isLoggedIn()">Welcome back, {{ this.loginService.getName() }}!</p>
+      <a class="btn" *ngIf="!this.loginService.isLoggedIn()" [routerLink]="['/login']"><img style="display:inline-block;" src="assets/img/login.png" class="navbar-image-login"></a>
+      <a class="btn" *ngIf="this.loginService.isLoggedIn()" [routerLink]="['/']"><img style="display:inline-block;" (click)="logoutFunction();" src="assets/img/logout.png" class="navbar-image-login"></a>
       <!-- SinglePlayer Dropdown -->
       <a class="btn" data-toggle="collapse" href="#singleplayer" aria-expanded="false" aria-controls="collapse"><img style="display:inline-block;" src="assets/img/singleplayer.png" class="navbar-image singleplayer-button"></a>
       <div class="collapse multi-collapse" id="singleplayer">
-        <!-- Solitaire -->
-        <a class="btn solitaire-button" [routerLink]="['/singleplayer']"><img style="display:inline-block;" src="assets/img/Solitaire.png" class="navbar-drop-image"></a>
+        <!-- Sandbox -->
+        <a class="btn sandbox-button" [routerLink]="['/sandbox']"><img style="display:inline-block;" src="assets/img/sandbox.png" class="navbar-drop-image"></a>
         <!-- Blackjack SP -->
         <a class="btn blackjack-button-sp" [routerLink]="['blackjack']"><img style="display:inline-block;" src="assets/img/Blackjack.png" class="navbar-drop-image"></a>
       </div>
       <!-- Multiplayer Dropdown -->
       <a class="btn" data-toggle="collapse" href="#multiplayer" aria-expanded="false" aria-controls="collapse"><img style="display:inline-block;" src="assets/img/multiplayer.png" class="navbar-image"></a>
       <div class="collapse multi-collapse" id="multiplayer">
-        <!-- Holdem -->
-        <a class="btn holdem-button" [routerLink]="['/multiplayer']"><img style="display:inline-block;" src="assets/img/TexasHoldem.png" class="navbar-drop-image"></a>
-        <!-- Blackjack MP -->
-        <a class="btn blackjack-button-mp" [routerLink]="['/host-game']"><img style="display:inline-block;" src="assets/img/Blackjack.png" class="navbar-drop-image"></a>
+        <!-- Join Game -->
+        <a class="btn holdem-button" [routerLink]="['/join-game']"><img style="display:inline-block;" src="assets/img/JoinGame.png" class="navbar-drop-image"></a>
+        <!-- Host Game -->
+        <a class="btn blackjack-button-mp" [routerLink]="['/host-game']"><img style="display:inline-block;" src="assets/img/HostGame.png" class="navbar-drop-image"></a>
       </div>
       <hr>
-      <!-- Sandbox -->
-      <a class="btn" [routerLink]="['/sandbox']"><img style="display:inline-block;" src="assets/img/sandbox.png" class="navbar-image-sandbox"></a>
       <!-- Leaderboard -->
       <a class="btn" [routerLink]="['/leaderboard']"><img style="display:inline-block;" src="assets/img/leaderboard.png" class="navbar-image-leaderboard"></a>
     </div>
