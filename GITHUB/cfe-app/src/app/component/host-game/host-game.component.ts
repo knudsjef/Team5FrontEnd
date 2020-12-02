@@ -20,6 +20,7 @@ export class HostGameComponent implements OnInit {
     dict["gameType"]="blackjack";
     this.backendApiService.backendRequest("hostGame",dict).subscribe(obj =>{
       console.log(obj);
+      this.gameID = obj.gameID;
     });
     console.log(this.gameID);
   }
