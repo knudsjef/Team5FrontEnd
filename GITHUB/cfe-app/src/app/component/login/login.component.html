@@ -1,16 +1,19 @@
-<h2 style="text-align: center; margin-top: 100px;">Login</h2>
-<div class="container">
+
+<div style ="background-color: honeydew;">
+<h2 style= " font-size: 75px; text-align: center; margin-top: 100px; color:black">Login</h2>
+<div class="container" >
     <form id="loginForm" style="text-align:center;" action="/action_page.php" (keydown)="keyPress($event)">
-        <label for="username">Email Address: </label>
-        <input type="text" id="email" name="email"><br>
-        <label for="password">Password: </label>
+        <label style= "font-size: 25px" for="username">Email Address: &nbsp;</label>
+        <input styletype="text" id="email" name="email"><br>
+        <label style="font-size: 25px " for="password">Password: &nbsp;</label>
         <input type="password" id="password" name="password"><br><br>
-        <button style="width:100%;" type="button" (click)="submitLoginFunction()">
+        <button style="width:100px;" type="button" (click)="submitLoginFunction()">
             Submit
         </button>
     </form>
     
 </div>
 <br>
-<div style="text-align: center;"><nav><a [routerLink]="['/createUser']"><p style="font-size:medium;">Create Account</p></a></nav></div>
+<div style="text-align: center;"><nav><a [routerLink]="['/createUser']"><p style="font-size: 15px; color: blue;" >Create Account</p></a></nav></div>
 <br><br><br>
+</div>

@@ -26,6 +26,7 @@ import { BlackjackComponent } from './component/blackjack/blackjack.component';
 import { LoginComponent } from './component/login/login.component';
 import { CreateUserComponent } from './component/create-user/create-user.component';
 import { HostGameComponent } from './component/host-game/host-game.component';
+import { JoinGameComponent } from './component/join-game/join-game.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { HostGameComponent } from './component/host-game/host-game.component';
     LeaderboardComponent,
     LoginComponent,
     CreateUserComponent,
-    HostGameComponent
+    HostGameComponent,
+    JoinGameComponent
   ],
   imports: [
     BrowserModule,

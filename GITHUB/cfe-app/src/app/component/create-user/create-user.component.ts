@@ -16,11 +16,12 @@ export class CreateUserComponent implements OnInit {
   re = new RegExp('[a-zA-Z0-9._%+-^@]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+'); //regex used to check if email is in correct format
 /** Function when the form is submitted, get the values and pass them to the server */
   submitUserFunction() { 
+    var real_name = "'" + (<HTMLInputElement>document.getElementById("real_name")).value + "'"; //gets real name
     var username = "'" + (<HTMLInputElement>document.getElementById("username")).value + "'"; //get username
     var email = "'" + (<HTMLInputElement>document.getElementById("email")).value + "'"; //get email
     var hash = "'" + CryptoJS.MD5((<HTMLInputElement>document.getElementById("password")).value) + "'"; //get password and hash it immediately
 
-    var dict = {"name": username, "hash": hash, "email": email}; //place the variables into the dictionary
+    var dict = {"real_name": real_name, "username": username, "hash": hash, "email": email}; //place the variables into the dictionary
 
     if ((<HTMLInputElement>document.getElementById("password")).value != (<HTMLInputElement>document.getElementById("confirmpassword")).value || (<HTMLInputElement>document.getElementById("password")).value == ""){
       alert("Passwords don't match"); //if password and confirm password don't match, error
