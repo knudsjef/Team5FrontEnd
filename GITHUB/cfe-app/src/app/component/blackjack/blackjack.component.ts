@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 import { promise } from 'protractor';
+import { interval, Subscription } from 'rxjs';
 import { card, makeCard } from 'src/app/models/card';
 import { cardContainer, emptyCardContainer } from 'src/app/models/cardContainer';
 import { BackendApiService } from 'src/app/services/backend-api.service';
@@ -11,8 +13,8 @@ import { BackendApiService } from 'src/app/services/backend-api.service';
 })
 export class BlackjackComponent implements OnInit {
 
-  playerID:String;
-  gameID:number;
+  @Input() playerID:String;
+  @Input() gameID:number;
   isTurn:boolean;
   gameContainers:Map<String,cardContainer>;
   static instance: BlackjackComponent;
@@ -20,15 +22,26 @@ export class BlackjackComponent implements OnInit {
   lastRoundDealer:String;
   lastRound:String;
   
+  subscription: Subscription;
+  source = interval(1000);
+ 
+
+  testFunc(){
+    console.log("test");
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+  
   constructor(private backendApiService: BackendApiService) { }
 
   async ngOnInit(): Promise<void> {
     this.isTurn=false;
-    await this.hostGame();
     this.gameContainers=new Map<String,cardContainer>();
     this.gameContainers.set(this.playerID, emptyCardContainer());
     this.gameContainers.set("dealer", emptyCardContainer());
     BlackjackComponent.instance = this;
+    this.subscription = this.source.subscribe(val => this.testFunc());
   }
 
   static GetInstance(): BlackjackComponent
@@ -36,47 +49,48 @@ export class BlackjackComponent implements OnInit {
     return BlackjackComponent.instance;
   }
 
-  async hostGame(){
-    var dict={};
-    dict["gameType"]="blackjack";
-    this.backendApiService.backendRequest("hostGame",dict).subscribe(async obj =>{
-      console.log(obj);
-      this.gameID=obj.blackjack;
-      console.log("host",this.gameID);
-      await this.setup();
-    });
-  }
-  async setup(){
-    var dict={};
-    dict["gameID"]=this.gameID;
-    dict["method"]="setup";
-    console.log(dict);
-    this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
-      console.log("setup",obj);
-    });
-  }
-  async joinGame(){
-    var dict={};
-    dict["gameID"]=this.gameID;
-    this.backendApiService.backendRequest("joinGame",dict).subscribe(obj =>{
-      console.log("join",obj);
-      this.playerID=obj.playerID;
-    });
-  }
-  async getGames(){
-    var dict={};
-    dict["gameID"]=this.gameID;
-    dict["method"]="getGames";
-    this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
-      console.log(obj);
-    });
-  }
+  // async hostGame(){
+  //   var dict={};
+  //   dict["gameType"]="blackjack";
+  //   this.backendApiService.backendRequest("hostGame",dict).subscribe(async obj =>{
+  //     console.log(obj);
+  //     this.gameID=obj.blackjack;
+  //     console.log("host",this.gameID);
+  //     await this.joinGame();
+  //   });
+  // }
+  // async setup(){
+  //   var dict={};
+  //   dict["gameID"]=this.gameID;
+  //   dict["method"]="setup";
+  //   console.log(dict);
+  //   this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
+  //     console.log("setup",obj);
+  //   });
+  // }
+  // async joinGame(){
+  //   var dict={};
+  //   dict["gameID"]=this.gameID;
+  //   this.backendApiService.backendRequest("joinGame",dict).subscribe(obj =>{
+  //     console.log("join",obj);
+  //     this.playerID=obj.playerID;
+  //     console.log(this.playerID);
+  //   });
+  // }
+  // async getGames(){
+  //   var dict={};
+  //   dict["gameID"]=this.gameID;
+  //   dict["method"]="getGames";
+  //   this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
+  //     console.log(obj);
+  //   });
+  // }
   async deal(){
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="deal";
     this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
-      console.log(obj);
+      console.log("deal",obj);
     });
   }
   async hit(){
@@ -105,6 +119,7 @@ export class BlackjackComponent implements OnInit {
     dict["method"]="getHand";
     dict["hand"]=this.playerID;
     this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
+      console.log("updateHand",obj);
       var temp:cardContainer=emptyCardContainer();
       for(var key in obj){
         temp.cards.push(makeCard(obj[key].cardNum));
