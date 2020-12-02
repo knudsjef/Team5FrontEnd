@@ -33,7 +33,8 @@ export class JoinGameComponent implements OnInit {
     this.backendApiService.backendRequest("joinGame",dict).subscribe(obj =>{
       console.log("join",obj);
       this.playerID=obj.playerID;
+      this.router.navigate(['/blackjack/' + gameID + '/' + this.playerID]);
     });
-    this.router.navigate(['/blackjack/' + gameID + '/' + this.playerID]);
+    
   }
 }

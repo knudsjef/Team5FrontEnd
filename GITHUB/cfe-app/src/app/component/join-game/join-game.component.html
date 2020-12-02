@@ -2,6 +2,6 @@
 
 <div *ngFor="let game of currentGameIDs;let i = index">
     <p>
-        Game ID: {{this.currentGameIDs[i]}} Player Count: {{this.currentGamePlayerNums[i]}} <button type="button" class="btn btn-secondary" (click)="joinGame(game.getID())">Join Game</button>
+        Game ID: {{currentGameIDs[i]}} Player Count: {{currentGamePlayerNums[i]}} <button type="button" class="btn btn-secondary" (click)="joinGame(currentGameIDs[i])">Join Game</button>
     </p>
 </div>
