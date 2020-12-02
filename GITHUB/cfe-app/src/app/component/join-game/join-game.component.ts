@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendApiService } from 'src/app/services/backend-api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-join-game',
@@ -13,7 +14,7 @@ export class JoinGameComponent implements OnInit {
   currentGamePlayerNums:number[];
   playerID:number
 
-  constructor(private backendApiService: BackendApiService) { }
+  constructor(private backendApiService: BackendApiService, private router: Router) { }
 
   ngOnInit(): void {
     this.getGames()
@@ -33,5 +34,6 @@ export class JoinGameComponent implements OnInit {
       console.log("join",obj);
       this.playerID=obj.playerID;
     });
+    this.router.navigate(['/blackjack/' + gameID + '/' + this.playerID]);
   }
 }
