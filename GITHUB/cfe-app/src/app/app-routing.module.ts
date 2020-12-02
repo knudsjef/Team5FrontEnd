@@ -6,6 +6,7 @@ import { LeaderboardComponent } from './component/leaderboard/leaderboard.compon
 import { MultiplayerComponent } from './component/multiplayer/multiplayer.component';
 import { SandboxComponent } from './component/sandbox/sandbox.component';
 import { SingleplayerComponent } from './component/singleplayer/singleplayer.component';
+import { HostGameComponent } from './component/host-game/host-game.component';
 
 //import { LoginGuard } from './login.guard';
 
@@ -15,7 +16,7 @@ const routes: Routes = [
   { path: 'multiplayer', component: MultiplayerComponent },
   { path: 'sandbox', component: SandboxComponent },
   { path: 'leaderboard', component: LeaderboardComponent},
-  { path: 'blackjack', component: BlackjackComponent }
+  { path: 'host-game', component: HostGameComponent}
 ];
 
 @NgModule({
@@ -23,4 +24,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const RoutingComponents = [HomepageComponent, BlackjackComponent, SingleplayerComponent, MultiplayerComponent, SandboxComponent, LeaderboardComponent]
+export const RoutingComponents = [HostGameComponent, HomepageComponent, BlackjackComponent, SingleplayerComponent, MultiplayerComponent, SandboxComponent, LeaderboardComponent]
