@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendApiService } from 'src/app/services/backend-api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-host-game',
@@ -10,7 +11,7 @@ export class HostGameComponent implements OnInit {
   gameID: number;
   playerID: number;
 
-  constructor(private backendApiService: BackendApiService) { }
+  constructor(private backendApiService: BackendApiService, private router: Router) { }
 
   async ngOnInit(): Promise<void> {
     await this.hostGame();
@@ -34,6 +35,7 @@ export class HostGameComponent implements OnInit {
     this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
       console.log("setup",obj);
     });
+    this.router.navigate(['/blackjack/' + this.gameID + '/' + this.playerID]);
   }
   async joinGame(){
     var dict={};
