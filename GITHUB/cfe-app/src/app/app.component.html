@@ -14,7 +14,7 @@
     <div class="list-group list-group-flush">
       <p *ngIf="this.loginService.isLoggedIn()">Welcome back, {{ this.loginService.getName() }}!</p>
       <a class="btn" *ngIf="!this.loginService.isLoggedIn()" [routerLink]="['/login']"><img style="display:inline-block;" src="assets/img/login.png" class="navbar-image-login"></a>
-      <a class="btn" *ngIf="this.loginService.isLoggedIn()" [routerLink]="['/']"><img style="display:inline-block;" (click)="logoutFunction();" src="assets/img/logout.png" class="navbar-image-login"></a>
+      <a class="btn" *ngIf="this.loginService.isLoggedIn()" [routerLink]="['/']"><img style="display:inline-block;" (click)="logoutFunction();" src="assets/img/logout.png" class="navbar-image-logout"></a>
       <!-- SinglePlayer Dropdown -->
       <a class="btn" data-toggle="collapse" href="#singleplayer" aria-expanded="false" aria-controls="collapse"><img style="display:inline-block;" src="assets/img/singleplayer.png" class="navbar-image singleplayer-button"></a>
       <div class="collapse multi-collapse" id="singleplayer">
