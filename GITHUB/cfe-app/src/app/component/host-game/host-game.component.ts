@@ -1,5 +1,6 @@
-import { Component, OnInit, Router } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BackendApiService } from 'src/app/services/backend-api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-host-game',
