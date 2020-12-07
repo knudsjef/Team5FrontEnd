@@ -6,6 +6,7 @@ import { interval, Subscription } from 'rxjs';
 import { card, makeCard } from 'src/app/models/card';
 import { cardContainer, emptyCardContainer } from 'src/app/models/cardContainer';
 import { BackendApiService } from 'src/app/services/backend-api.service';
+import { CardComponent } from '../card/card.component';
 
 @Component({
   selector: 'app-blackjack',
@@ -88,6 +89,7 @@ export class BlackjackComponent implements OnInit {
     });
   }
   async deal(){
+    CardComponent.numOfCards = 0;
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="deal";
@@ -97,6 +99,7 @@ export class BlackjackComponent implements OnInit {
     });
   }
   async hit(){
+    CardComponent.numOfCards = 0;
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="hit";
