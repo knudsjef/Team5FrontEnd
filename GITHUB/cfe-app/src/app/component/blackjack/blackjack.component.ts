@@ -101,7 +101,7 @@ export class BlackjackComponent implements OnInit {
     this.backendApiService.backendRequest("blackjack",dict).subscribe(async obj =>{
       CardComponent.numOfCards = 0;
       console.log("deal",obj);
-      await this.updateHand();
+      await this.updateAll();
     });
   }
   async hit(){
