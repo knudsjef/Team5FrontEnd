@@ -19,9 +19,10 @@ export class BlackjackComponent implements OnInit {
   isTurn:boolean;
   gameContainers:Map<String,cardContainer>;
   static instance: BlackjackComponent;
-  lastRoundPlayer:String;
-  lastRoundDealer:String;
-  lastRound:String;
+
+  finalPlayerScore:String;
+  finalDealerScore:String;
+  playerWinOrLose:String;
   otherPlayers:String[];
   
   subscription: Subscription;
@@ -179,7 +180,14 @@ export class BlackjackComponent implements OnInit {
     this.backendApiService.backendRequest("blackjack",dict).subscribe(async obj =>{
       CardComponent.numOfCards = 0;
       console.log(obj);
-      this.isTurn=obj.isTurn;
+      if(obj.isTurn){
+        this.isTurn=obj.isTurn;
+      }
+      else {
+        this.finalPlayerScore = obj.PlayerScore;
+        this.finalDealerScore = obj.DealerScore;
+        this.playerWinOrLose = obj.WinOrLose;
+      }
       await this.updateAll();
     });
   }

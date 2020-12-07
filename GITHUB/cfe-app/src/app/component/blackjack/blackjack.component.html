@@ -3,7 +3,7 @@
     <button type="button" class="btn btn-success btn-circle btn-xl" (click)="hit()">Hit</button>
     <button type="button" class="btn btn-danger btn-circle btn-xl" (click)="stay()">Stay</button>
     
-    <div style="font-size:36px;color:white">{{lastRound}} {{lastRoundDealer}} {{lastRoundPlayer}}</div>
+    <div style="font-size:36px;color:white">{{playerWinOrLose}} {{dealerScore}} {{playerScore}}</div>
     
     <div *ngFor="let card of gameContainers.get(playerID).cards">
         <app-card

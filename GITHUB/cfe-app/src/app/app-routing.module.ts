@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'leaderboard', component: LeaderboardComponent},
   { path: 'host-game', component: HostGameComponent},
   { path: 'blackjack/:gameID/:playerID', component: BlackjackComponent },
+  { path: 'blackjack', component: BlackjackComponent },
   { path: 'join-game', component: JoinGameComponent},
   { path: 'login', component: LoginComponent},
   { path: 'createUser', component: CreateUserComponent}
