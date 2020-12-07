@@ -166,7 +166,6 @@ export class BlackjackComponent implements OnInit {
       }
       this.otherPlayers.splice(this.otherPlayers.lastIndexOf(this.playerID),1);
       this.otherPlayers.splice(this.otherPlayers.lastIndexOf("dealer"),1);
-      console.log(this.otherPlayers);
       await this.updateHand();
     });
   }
