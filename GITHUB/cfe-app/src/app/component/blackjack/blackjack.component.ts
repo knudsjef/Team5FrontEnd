@@ -24,7 +24,7 @@ export class BlackjackComponent implements OnInit {
   lastRound:String;
   
   subscription: Subscription;
-  source = interval(10000);
+  source = interval(5000);
  
 
   testFunc(){
