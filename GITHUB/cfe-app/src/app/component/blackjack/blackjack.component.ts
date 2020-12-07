@@ -22,6 +22,7 @@ export class BlackjackComponent implements OnInit {
   lastRoundPlayer:String;
   lastRoundDealer:String;
   lastRound:String;
+  otherPlayers:String[];
   
   subscription: Subscription;
   source = interval(5000);
@@ -41,6 +42,7 @@ export class BlackjackComponent implements OnInit {
     this.gameID = Number(this.route.snapshot.paramMap.get('gameID'));
     this.playerID = this.route.snapshot.paramMap.get('playerID');
     this.isTurn=false;
+    this.otherPlayers=[];
     this.gameContainers=new Map<String,cardContainer>();
     this.gameContainers.set(this.playerID, emptyCardContainer());
     this.gameContainers.set("dealer", emptyCardContainer());
@@ -152,13 +154,18 @@ export class BlackjackComponent implements OnInit {
     this.backendApiService.backendRequest("blackjack",dict).subscribe(async obj =>{
       CardComponent.numOfCards = 0;
       console.log(obj);
+      this.otherPlayers=[];
       for(var key in obj){
+        this.otherPlayers.push(key);
         var temp = emptyCardContainer();
         for(var cardKey in obj[key]){
          temp.cards.push(makeCard(obj[key][cardKey].cardNum)); 
         }
         this.gameContainers.set(key,temp);
       }
+      this.otherPlayers.splice(this.otherPlayers.lastIndexOf(this.playerID),1);
+      this.otherPlayers.splice(this.otherPlayers.lastIndexOf("dealer"),1);
+      console.log(this.otherPlayers);
       await this.updateHand();
     });
   }
