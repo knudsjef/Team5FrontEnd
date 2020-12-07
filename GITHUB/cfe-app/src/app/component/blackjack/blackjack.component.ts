@@ -140,7 +140,7 @@ export class BlackjackComponent implements OnInit {
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="showCards";
-    this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
+    this.backendApiService.backendRequest("blackjack",dict).subscribe(async obj =>{
       console.log(obj);
       for(var key in obj){
         var temp = emptyCardContainer();
@@ -149,6 +149,7 @@ export class BlackjackComponent implements OnInit {
         }
         this.gameContainers.set(key,temp);
       }
+      await this.updateHand();
     });
   }
 

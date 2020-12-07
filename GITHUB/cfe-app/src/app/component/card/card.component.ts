@@ -79,7 +79,7 @@ export class CardComponent implements OnInit {
  {
     if (!this.isFlipped)
     {
-      this.source = '../../../assets/Cards/' + this.type + '/' + this.number + '.jpg';
+      this.source = '../../../assets/Cards/' + this.type + '/' + (this.number=="-1"?"CardBack":this.number) + '.jpg';
     }
     else
     {
