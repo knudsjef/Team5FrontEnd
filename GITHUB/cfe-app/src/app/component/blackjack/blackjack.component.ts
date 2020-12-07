@@ -37,6 +37,7 @@ export class BlackjackComponent implements OnInit {
   constructor(private backendApiService: BackendApiService, private route: ActivatedRoute) { }
 
   async ngOnInit(): Promise<void> {
+    CardComponent.numOfCards = 0;
     this.gameID = Number(this.route.snapshot.paramMap.get('gameID'));
     this.playerID = this.route.snapshot.paramMap.get('playerID');
     this.isTurn=false;
@@ -85,6 +86,7 @@ export class BlackjackComponent implements OnInit {
     dict["gameID"]=this.gameID;
     dict["method"]="getGames";
     this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
+      CardComponent.numOfCards = 0;
       console.log(obj);
     });
   }
@@ -94,6 +96,7 @@ export class BlackjackComponent implements OnInit {
     dict["gameID"]=this.gameID;
     dict["method"]="deal";
     this.backendApiService.backendRequest("blackjack",dict).subscribe(async obj =>{
+      CardComponent.numOfCards = 0;
       console.log("deal",obj);
       await this.updateHand();
     });
@@ -105,6 +108,7 @@ export class BlackjackComponent implements OnInit {
     dict["method"]="hit";
     dict["hand"]=this.playerID;
     this.backendApiService.backendRequest("blackjack",dict).subscribe(async obj =>{
+      CardComponent.numOfCards = 0;
       console.log(obj);
       await this.updateHand();
     });
@@ -118,6 +122,7 @@ export class BlackjackComponent implements OnInit {
     dict["method"]="stay";
     dict["hand"]=this.playerID;
     this.backendApiService.backendRequest("blackjack",dict).subscribe(async obj =>{
+      CardComponent.numOfCards = 0;
       console.log(obj);
       await this.updateHand();
     });
@@ -129,6 +134,7 @@ export class BlackjackComponent implements OnInit {
     dict["method"]="getHand";
     dict["hand"]=this.playerID;
     this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
+      CardComponent.numOfCards = 0;
       console.log("updateHand",obj);
       var temp:cardContainer=emptyCardContainer();
       for(var key in obj){
@@ -144,6 +150,7 @@ export class BlackjackComponent implements OnInit {
     dict["gameID"]=this.gameID;
     dict["method"]="showCards";
     this.backendApiService.backendRequest("blackjack",dict).subscribe(async obj =>{
+      CardComponent.numOfCards = 0;
       console.log(obj);
       for(var key in obj){
         var temp = emptyCardContainer();
@@ -163,6 +170,7 @@ export class BlackjackComponent implements OnInit {
     dict["method"]="checkIfTurn";
     dict["hand"]=this.playerID;
     this.backendApiService.backendRequest("blackjack",dict).subscribe(async obj =>{
+      CardComponent.numOfCards = 0;
       console.log(obj);
       if(obj.isTurn){
         this.isTurn=obj.isTurn;

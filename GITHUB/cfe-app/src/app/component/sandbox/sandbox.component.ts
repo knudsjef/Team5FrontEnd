@@ -26,7 +26,9 @@ export class SandboxComponent implements OnInit {
   cards:cardContainer = new cardContainer;
 
   ngOnInit(): void {
+    CardComponent.numOfCards = 0;
     this.cards.cards=[makeCard(1),makeCard(2),makeCard(3)];
+    CardComponent.numOfCards = 0;
   }
 
   //Places card in front
