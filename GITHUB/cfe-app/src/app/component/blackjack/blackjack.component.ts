@@ -110,6 +110,7 @@ export class BlackjackComponent implements OnInit {
     });
   }
   async stay(){
+    CardComponent.numOfCards = 0;
     console.log(this.gameID);
     console.log(this.gameContainers);
     var dict={};
@@ -122,6 +123,7 @@ export class BlackjackComponent implements OnInit {
     });
   }
   async updateHand(){
+    CardComponent.numOfCards = 0;
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="getHand";
@@ -137,6 +139,7 @@ export class BlackjackComponent implements OnInit {
     });
   }
   async updateAll(){
+    CardComponent.numOfCards = 0;
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="showCards";
@@ -154,6 +157,7 @@ export class BlackjackComponent implements OnInit {
   }
 
   async checkTurn(){
+    CardComponent.numOfCards = 0;
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="checkIfTurn";
