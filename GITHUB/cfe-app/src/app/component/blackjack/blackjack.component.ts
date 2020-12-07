@@ -154,9 +154,10 @@ export class BlackjackComponent implements OnInit {
     dict["gameID"]=this.gameID;
     dict["method"]="checkIfTurn";
     dict["hand"]=this.playerID;
-    this.backendApiService.backendRequest("blackjack",dict).subscribe(obj =>{
+    this.backendApiService.backendRequest("blackjack",dict).subscribe(async obj =>{
       console.log(obj);
       this.isTurn=obj.isTurn;
+      await this.updateAll();
     });
   }
 }
