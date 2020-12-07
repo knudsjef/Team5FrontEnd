@@ -31,8 +31,9 @@ export class CardComponent implements OnInit {
   @Input() type: string;
   @Input() number: string;
   source: string;
-  xPos: Number;
-  yPos: Number;
+  public static numOfCards: number = 0;
+  xPos: number = 200;
+  yPos: number;
   initialPosition;
   flipping: Boolean = false;
   isFlipped: Boolean = false;
@@ -44,6 +45,8 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void {
     this.GetImageSource();
+    CardComponent.numOfCards++;
+    this.xPos += 200 * CardComponent.numOfCards;
   }
 
   //Changes the scss classes
