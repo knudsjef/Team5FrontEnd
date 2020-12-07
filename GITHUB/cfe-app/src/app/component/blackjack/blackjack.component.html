@@ -4,7 +4,7 @@
     <button type="button" class="btn btn-danger btn-circle btn-xl" (click)="stay()">Stay</button>
     <button type="button" class="btn btn-secondary" (click)="getGames()">Get Games</button>
     
-    <div style="font-size:36px;color:white">{{lastRound}} {{lastRoundDealer}} {{lastRoundPlayer}}</div>
+    <div style="font-size:36px;color:white">{{playerWinOrLose}} {{dealerScore}} {{playerScore}}</div>
     
     <div *ngFor="let card of gameContainers.get(playerID).cards">
         <app-card
