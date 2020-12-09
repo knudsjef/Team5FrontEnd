@@ -15,7 +15,5 @@
 .otherPlayers
 {
     position: absolute;
-    transform: rotate(90deg);
-    scale: (0.25);
-    left: 500;
+    transform: rotate(90deg) scale(0.25);
 }
