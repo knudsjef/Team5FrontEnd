@@ -31,9 +31,6 @@ export class BlackjackComponent implements OnInit {
   source = interval(1000);
  
 
-  testFunc(){
-    console.log(this.playerID,this.gameID);
-  }
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
