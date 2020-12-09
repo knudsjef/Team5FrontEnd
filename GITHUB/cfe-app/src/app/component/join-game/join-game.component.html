@@ -3,14 +3,14 @@
         <h1 class="card-title">Join Game</h1>
 
         <div class="row" style="justify-content: center; margin: 10px;">
-            <div class="col-4">
+            <div class="col-4" style="min-width:400px;max-width:max-content">
                 <div class="list-group" id="list-tab" role="tablist">
                     <div *ngFor="let game of currentGameIDs;let i = index">
                         <a class="list-group-item list-group-item-action active" id="list-home-list" role="tab"
                             aria-controls="home">Game ID: {{currentGameIDs[i]}} Player Count:
-                            {{currentGamePlayerNums[i]}}</a>
-                        <button type="button" class="btn btn-secondary"
-                            (click)="joinGame(currentGameIDs[i])">Join</button>
+                            {{currentGamePlayerNums[i]}}
+                        <button type="button" class="btn btn-secondary" style="margin-left:15px"
+                            (click)="joinGame(currentGameIDs[i])">Join</button></a>
                     </div>
                 </div>
             </div>

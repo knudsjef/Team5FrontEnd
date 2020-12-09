@@ -1,9 +1,8 @@
 <div style="width: 1920px;height: 1080px;">
-    <button *ngIf="playerID=='player1'" type="button" class="btn btn-primary btn-circle btn-xl" (click)="deal()">Deal</button>
-    <button type="button" class="btn btn-success btn-circle btn-xl" (click)="hit()">Hit</button>
-    <button type="button" class="btn btn-danger btn-circle btn-xl" (click)="stay()">Stay</button>
-    
-    <div style="font-size:36px;color:white">{{playerWinOrLose}} {{finalDealerScore}} {{finalPlayerScore}}</div>
+    <button [disabled]="roundActive" *ngIf="playerID=='player1'" type="button" class="btn btn-primary btn-circle btn-xl" (click)="deal()">Deal</button>
+    <button [disabled]="!isTurn" type="button" class="btn btn-success btn-circle btn-xl" (click)="hit()">Hit</button>
+    <button [disabled]="!isTurn" type="button" class="btn btn-danger btn-circle btn-xl" (click)="stay()">Stay</button>
+    <div *ngIf="!roundActive" style="font-size:36px;color:white">{{playerWinOrLose}} {{finalDealerScore}} {{finalPlayerScore}}</div>
     
     <div *ngFor="let card of gameContainers.get(playerID).cards; let i = index" class="player">
         <app-card
