@@ -1,5 +1,24 @@
-<h1>Host Game:</h1>
+<div class="card text-center bg-dark text-white" style="min-width: 500px; max-width: 65%; border-color: black">
+  <div class="card-body">
+    <h1 class="card-title">Host Game</h1>
 
-<p>Game ID: {{ this.gameID }}</p>
+    <h6 class="card-subtitle">Game ID: {{ this.gameID }}</h6>
 
-<button type="button" class="btn btn-primary" (click)="setup()">Start Game</button>
+    <div class="row" style="justify-content: center; margin: 10px;">
+      <div class="col-4">
+        <div class="list-group" id="list-tab" role="tablist">
+          <a class="list-group-item list-group-item-action active" id="list-home-list" role="tab"
+            aria-controls="home">Blackjack</a>
+          <a class="list-group-item list-group-item-action disabled" id="list-profile-list" role="tab"
+            aria-controls="profile">Hold'em</a>
+          <a class="list-group-item list-group-item-action disabled" id="list-messages-list" role="tab"
+            aria-controls="messages">War</a>
+          <a class="list-group-item list-group-item-action disabled" id="list-settings-list" role="tab"
+            aria-controls="settings">Slapjack</a>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-primary" (click)="setup()">Start Game</button>
+  </div>
+</div>

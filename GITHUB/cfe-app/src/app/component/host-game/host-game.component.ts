@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendApiService } from 'src/app/services/backend-api.service';
 import { Router } from '@angular/router';
+import * as $ from 'jQuery';
 
 @Component({
   selector: 'app-host-game',
   templateUrl: './host-game.component.html',
   styleUrls: ['./host-game.component.scss']
 })
+
 export class HostGameComponent implements OnInit {
   gameID: number;
   playerID: number;
@@ -15,8 +17,8 @@ export class HostGameComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     await this.hostGame();
-    
-  }
+ }
+
   async hostGame(){
     var dict={};
     dict["gameType"]="blackjack";
