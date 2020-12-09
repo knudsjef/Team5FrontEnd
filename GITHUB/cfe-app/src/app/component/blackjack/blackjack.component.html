@@ -1,15 +1,34 @@
 <div style="width: 1920px;height: 1080px;">
-    <button type="button" class="btn btn-primary btn-circle btn-xl" (click)="deal()">Deal</button>
+    <button *ngIf="playerID=='player1'" type="button" class="btn btn-primary btn-circle btn-xl" (click)="deal()">Deal</button>
     <button type="button" class="btn btn-success btn-circle btn-xl" (click)="hit()">Hit</button>
     <button type="button" class="btn btn-danger btn-circle btn-xl" (click)="stay()">Stay</button>
-    <button type="button" class="btn btn-secondary" (click)="getGames()">Get Games</button>
     
-    <div style="font-size:36px;color:white">{{lastRound}} {{lastRoundDealer}} {{lastRoundPlayer}}</div>
+    <div style="font-size:36px;color:white">{{playerWinOrLose}} {{finalDealerScore}} {{finalPlayerScore}}</div>
     
-    <div *ngFor="let card of gameContainers.get(playerID).cards">
+    <div *ngFor="let card of gameContainers.get(playerID).cards" class="player">
         <app-card
             [type]="card.type"
-            [number]="card.value">
+            [number]="card.value"
+            [disabled]="true">
         </app-card>
+    </div>
+
+    <div *ngFor="let card of gameContainers.get('dealer').cards">
+        <app-card
+            [type]="card.type"
+            [number]="card.value"
+            [disabled]="true">
+        </app-card>
+    </div>
+
+    <div *ngFor="let player of otherPlayers">
+        <div *ngFor="let card of gameContainers.get(player).cards" class="otherPlayers">
+            <app-card
+            [type]="card.type"
+            [number]="card.value"
+            [disabled]="true">
+        </app-card>
+        </div>
+        <br>
     </div>
 </div>

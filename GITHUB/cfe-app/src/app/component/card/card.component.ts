@@ -30,9 +30,11 @@ import { SandboxComponent } from '../sandbox/sandbox.component';
 export class CardComponent implements OnInit {
   @Input() type: string;
   @Input() number: string;
+  @Input() disabled: boolean;
   source: string;
-  xPos: Number;
-  yPos: Number;
+  public static numOfCards: number = 0;
+  xPos: number = 200;
+  yPos: number;
   initialPosition;
   flipping: Boolean = false;
   isFlipped: Boolean = false;
@@ -44,6 +46,8 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void {
     this.GetImageSource();
+    CardComponent.numOfCards++;
+    this.xPos += 200 * CardComponent.numOfCards;
   }
 
   //Changes the scss classes
@@ -76,7 +80,7 @@ export class CardComponent implements OnInit {
  {
     if (!this.isFlipped)
     {
-      this.source = '../../../assets/Cards/' + this.type + '/' + this.number + '.jpg';
+      this.source = '../../../assets/Cards/' + this.type + '/' + (this.number=="-1"?"CardBack":this.number) + '.jpg';
     }
     else
     {
