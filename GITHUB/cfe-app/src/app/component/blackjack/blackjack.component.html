@@ -4,30 +4,33 @@
     <button [disabled]="!isTurn" type="button" class="btn btn-danger btn-circle btn-xl" (click)="stay()">Stay</button>
     <div *ngIf="!roundActive" style="font-size:36px;color:white">{{playerWinOrLose}} {{finalDealerScore}} {{finalPlayerScore}}</div>
     
-    <div *ngFor="let card of gameContainers.get(playerID).cards" class="player">
+    <div *ngFor="let card of gameContainers.get(playerID).cards; let i = index" class="player">
         <app-card
             [type]="card.type"
             [number]="card.value"
-            [disabled]="true">
+            [disabled]="true"
+            [cardInstanceNumber]="i">
         </app-card>
     </div>
 
-    <div *ngFor="let card of gameContainers.get('dealer').cards">
+    <div *ngFor="let card of gameContainers.get('dealer').cards; let i = index" class="dealer">
         <app-card
             [type]="card.type"
             [number]="card.value"
-            [disabled]="true">
+            [disabled]="true"
+            [cardInstanceNumber]="i">
         </app-card>
     </div>
 
-    <div *ngFor="let player of otherPlayers">
-        <div *ngFor="let card of gameContainers.get(player).cards" class="otherPlayers">
+    <p>Opponents Hands</p>
+    <div *ngFor="let player of otherPlayers" class="otherPlayers">
+        <div *ngFor="let card of gameContainers.get(player).cards; let i = index">
             <app-card
             [type]="card.type"
             [number]="card.value"
-            [disabled]="true">
+            [disabled]="true"
+            [cardInstanceNumber]="i">
         </app-card>
         </div>
-        <br>
     </div>
 </div>

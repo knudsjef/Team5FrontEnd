@@ -10,10 +10,17 @@
 .player{
     position: absolute; 
     bottom: 300px; 
+    right: 1250px;
 }
 
 .otherPlayers
 {
     position: absolute;
     transform: rotate(90deg) scale(0.25);
+    left: 500px;
+}
+
+.dealer{
+    position: absolute;
+    right: 1250px;
 }
