@@ -22,8 +22,7 @@
             [cardInstanceNumber]="i">
         </app-card>
     </div>
-
-    <p>Opponents Hands</p>
+    
     <div *ngFor="let player of otherPlayers" class="otherPlayers">
         <div *ngFor="let card of gameContainers.get(player).cards; let i = index">
             <app-card
