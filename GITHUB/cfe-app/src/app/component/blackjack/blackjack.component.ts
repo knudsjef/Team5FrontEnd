@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
+import { Console } from 'console';
 import { promise } from 'protractor';
 import { interval, Subscription } from 'rxjs';
 import { card, makeCard } from 'src/app/models/card';
@@ -105,7 +106,6 @@ export class BlackjackComponent implements OnInit {
     });
   }
   async hit(){
-    CardComponent.numOfCards = 0;
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="hit";
@@ -117,7 +117,6 @@ export class BlackjackComponent implements OnInit {
     });
   }
   async stay(){
-    CardComponent.numOfCards = 0;
     console.log(this.gameID);
     console.log(this.gameContainers);
     var dict={};
@@ -131,7 +130,6 @@ export class BlackjackComponent implements OnInit {
     });
   }
   async updateHand(){
-    CardComponent.numOfCards = 0;
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="getHand";
@@ -148,7 +146,6 @@ export class BlackjackComponent implements OnInit {
     });
   }
   async updateAll(){
-    CardComponent.numOfCards = 0;
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="showCards";
@@ -162,16 +159,18 @@ export class BlackjackComponent implements OnInit {
         for(var cardKey in obj[key]){
          temp.cards.push(makeCard(obj[key][cardKey].cardNum)); 
         }
+        CardComponent.numOfCards = 0;
         this.gameContainers.set(key,temp);
       }
+      console.log(this.otherPlayers);
       this.otherPlayers.splice(this.otherPlayers.lastIndexOf(this.playerID),1);
       this.otherPlayers.splice(this.otherPlayers.lastIndexOf("dealer"),1);
+      console.log(this.otherPlayers);
       await this.updateHand();
     });
   }
 
   async checkTurn(){
-    CardComponent.numOfCards = 0;
     var dict={};
     dict["gameID"]=this.gameID;
     dict["method"]="checkIfTurn";

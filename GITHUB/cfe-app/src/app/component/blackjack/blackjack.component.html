@@ -5,10 +5,27 @@
     
     <div style="font-size:36px;color:white">{{playerWinOrLose}} {{finalDealerScore}} {{finalPlayerScore}}</div>
     
-    <div *ngFor="let card of gameContainers.get(playerID).cards">
+    <div *ngFor="let card of gameContainers.get(playerID).cards" class="player">
         <app-card
             [type]="card.type"
             [number]="card.value">
         </app-card>
+    </div>
+
+    <div *ngFor="let card of gameContainers.get('dealer').cards">
+        <app-card
+            [type]="card.type"
+            [number]="card.value">
+        </app-card>
+    </div>
+
+    <div *ngFor="let player of otherPlayers">
+        <div *ngFor="let card of gameContainers.get(player).cards" class="otherPlayers">
+            <app-card
+            [type]="card.type"
+            [number]="card.value">
+        </app-card>
+        </div>
+        <br>
     </div>
 </div>

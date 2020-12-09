@@ -6,3 +6,16 @@
     font-size: 12px;
     text-align: center;
 }
+
+.player{
+    position: absolute; 
+    bottom: 300px; 
+}
+
+.otherPlayers
+{
+    position: absolute;
+    transform: rotate(90deg);
+    scale: (0.25);
+    left: 500;
+}
