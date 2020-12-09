@@ -13,7 +13,7 @@
     (cdkDragEnded)="GetPosition($event)"
     (dblclick)="FlipCardOnDoubleClick()"
     [@FlipCard]="flipping ? 'NotFlipped' : 'Flipped'"
-
+    [cdkDragDisabled]="disabled"
     cdkDrag> 
 </a>
 

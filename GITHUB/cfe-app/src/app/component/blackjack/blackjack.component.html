@@ -8,14 +8,16 @@
     <div *ngFor="let card of gameContainers.get(playerID).cards" class="player">
         <app-card
             [type]="card.type"
-            [number]="card.value">
+            [number]="card.value"
+            [disabled]="true">
         </app-card>
     </div>
 
     <div *ngFor="let card of gameContainers.get('dealer').cards">
         <app-card
             [type]="card.type"
-            [number]="card.value">
+            [number]="card.value"
+            [disabled]="true">
         </app-card>
     </div>
 
@@ -23,7 +25,8 @@
         <div *ngFor="let card of gameContainers.get(player).cards" class="otherPlayers">
             <app-card
             [type]="card.type"
-            [number]="card.value">
+            [number]="card.value"
+            [disabled]="true">
         </app-card>
         </div>
         <br>
