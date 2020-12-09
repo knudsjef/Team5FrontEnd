@@ -30,6 +30,7 @@ import { SandboxComponent } from '../sandbox/sandbox.component';
 export class CardComponent implements OnInit {
   @Input() type: string;
   @Input() number: string;
+  @Input() disabled: boolean;
   source: string;
   public static numOfCards: number = 0;
   xPos: number = 200;

@@ -1,7 +1,19 @@
-<h1>Join Game</h1>
+<div class="card text-center bg-dark text-white" style="min-width: 500px; max-width: 65%; border-color: black">
+    <div class="card-body">
+        <h1 class="card-title">Join Game</h1>
 
-<div *ngFor="let game of currentGameIDs;let i = index">
-    <p>
-        Game ID: {{currentGameIDs[i]}} Player Count: {{currentGamePlayerNums[i]}} <button type="button" class="btn btn-secondary" (click)="joinGame(currentGameIDs[i])">Join Game</button>
-    </p>
+        <div class="row" style="justify-content: center; margin: 10px;">
+            <div class="col-4">
+                <div class="list-group" id="list-tab" role="tablist">
+                    <div *ngFor="let game of currentGameIDs;let i = index">
+                        <a class="list-group-item list-group-item-action active" id="list-home-list" role="tab"
+                            aria-controls="home">Game ID: {{currentGameIDs[i]}} Player Count:
+                            {{currentGamePlayerNums[i]}}</a>
+                        <button type="button" class="btn btn-secondary"
+                            (click)="joinGame(currentGameIDs[i])">Join</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
